@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/career-recruiting-specialists/static/css/main.201f2f56.chunk.css",
-    "main.js": "/career-recruiting-specialists/static/js/main.6af1092b.chunk.js",
-    "main.js.map": "/career-recruiting-specialists/static/js/main.6af1092b.chunk.js.map",
+    "main.js": "/career-recruiting-specialists/static/js/main.bb48d8f5.chunk.js",
+    "main.js.map": "/career-recruiting-specialists/static/js/main.bb48d8f5.chunk.js.map",
     "runtime-main.js": "/career-recruiting-specialists/static/js/runtime-main.55169875.js",
     "runtime-main.js.map": "/career-recruiting-specialists/static/js/runtime-main.55169875.js.map",
-    "static/js/2.4773f301.chunk.js": "/career-recruiting-specialists/static/js/2.4773f301.chunk.js",
-    "static/js/2.4773f301.chunk.js.map": "/career-recruiting-specialists/static/js/2.4773f301.chunk.js.map",
+    "static/js/2.614e70aa.chunk.js": "/career-recruiting-specialists/static/js/2.614e70aa.chunk.js",
+    "static/js/2.614e70aa.chunk.js.map": "/career-recruiting-specialists/static/js/2.614e70aa.chunk.js.map",
     "static/js/3.8a96252a.chunk.js": "/career-recruiting-specialists/static/js/3.8a96252a.chunk.js",
     "static/js/3.8a96252a.chunk.js.map": "/career-recruiting-specialists/static/js/3.8a96252a.chunk.js.map",
     "index.html": "/career-recruiting-specialists/index.html",
     "static/css/main.201f2f56.chunk.css.map": "/career-recruiting-specialists/static/css/main.201f2f56.chunk.css.map",
-    "static/js/2.4773f301.chunk.js.LICENSE.txt": "/career-recruiting-specialists/static/js/2.4773f301.chunk.js.LICENSE.txt",
+    "static/js/2.614e70aa.chunk.js.LICENSE.txt": "/career-recruiting-specialists/static/js/2.614e70aa.chunk.js.LICENSE.txt",
     "static/media/logo-image.3b9e0d1c.jpg": "/career-recruiting-specialists/static/media/logo-image.3b9e0d1c.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.55169875.js",
-    "static/js/2.4773f301.chunk.js",
+    "static/js/2.614e70aa.chunk.js",
     "static/css/main.201f2f56.chunk.css",
-    "static/js/main.6af1092b.chunk.js"
+    "static/js/main.bb48d8f5.chunk.js"
   ]
 }
