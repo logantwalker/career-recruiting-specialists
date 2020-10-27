@@ -35,7 +35,6 @@ const Navbar = (props) => {
                                 dropdown={true}>
                                     <a className='dropdown-link' href='!#'>Job Seekers FAQ</a>
                                     <a className='dropdown-link' href='!#'>Current Job Openings</a>
-                                    <Divider />
                                     <a className='dropdown-link' href='!#'>Online Application</a>
                             </NavItem>
                         </Col>
