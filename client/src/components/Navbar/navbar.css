@@ -1,0 +1,17 @@
+.custom-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    height: 76px;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 76px;
+    z-index: 50;
+    box-shadow: 0px 1px 10px rgba(0,0,0,0.8);
+}
+
+.dropdown-link{
+    font: inherit !important;
+    color: inherit !important;
+}

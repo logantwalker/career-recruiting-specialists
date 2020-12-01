@@ -1,0 +1,52 @@
+.home-page{
+    margin-top: 76px;
+    height: 1000px
+}
+
+.title-container{
+    height:0px;
+    position: relative;
+    top:80px;
+    margin-left: 5%;
+    width:80%;
+    
+}
+
+.title-head{
+    margin-top: 0;
+    color:#ffffff;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.title-background{
+    vertical-align: top;
+    border-radius: 25px;
+    padding:4%;
+    padding-left:3%;
+    padding-right:3%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.title-motto{
+    color: white;
+    font-size: 2rem;
+    width: 100%;
+    font-weight: 600;
+    
+}
+
+.title-btn{
+    margin-left:0;
+    margin-right:4%;
+    background-color: rgb(16%, 56%, 89%) !important;
+}
+
+.parallax-container{
+    height: 550px;
+    width:100%;
+}
+
+.parallax-img{
+    filter: brightness(50%)
+}
