@@ -1,16 +1,17 @@
 .home-page{
     margin-top: 76px;
-    height: 1000px
+  
 }
 
 .title-container{
     height:0px;
     position: relative;
     top:80px;
-    margin-left: 5%;
+    margin-left: 10%;
     width:80%;
     
 }
+
 
 .title-head{
     margin-top: 0;
@@ -43,10 +44,38 @@
 }
 
 .parallax-container{
-    height: 550px;
+    height: 625px;
     width:100%;
 }
 
 .parallax-img{
     filter: brightness(50%)
+}
+
+.specialties{
+    padding-bottom: 2%;
+}
+
+.specialties-desc{
+    color: #808080;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.specialties h1{
+    color:#153A81;
+    margin-bottom: 1%;
+}
+
+.specialties a{
+    color: inherit;
+}
+
+.specialties a:hover{
+    color:  rgb(16%, 56%, 89%);
+}
+
+.icon-img img{
+    height: 200px;
+    margin-bottom: 4%;
 }

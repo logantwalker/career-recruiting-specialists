@@ -1,6 +1,9 @@
 const express = require("express");
 const session = require("express-session");
 
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+}
 const app = express();
 const PORT = process.env.PORT || 3002;
 
@@ -9,5 +12,5 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.listen(PORT, () =>
-  console.log(`🌎  ==> API Server now listening on http://localhost:${PORT}/`)
+    console.log(`🌎  ==> API Server now listening on http://localhost:${PORT}/`)
 );
