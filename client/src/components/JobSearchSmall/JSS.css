@@ -1,0 +1,29 @@
+.featured-head{
+    color:#153A81;
+    margin-left:4%;
+}
+
+.featured-item{
+    margin-left: 4% !important;
+}
+
+.jobsearch-head{
+    color:#153A81;
+}
+
+.job-card{
+    color: white;
+    background-color: #298FE3;
+}
+
+.card .card-action{
+    border-top: 1px solid rgba(255,255,255,0.5) !important; 
+}
+
+.card-action a{
+    color: white !important;
+}
+
+.card-action a:hover{
+    color:#ffab40 !important;
+}
