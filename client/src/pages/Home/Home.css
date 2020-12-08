@@ -60,6 +60,7 @@
     color: #808080;
     padding-left: 10%;
     padding-right: 10%;
+    margin-bottom: 2%;
 }
 
 .specialties h1{
@@ -78,4 +79,45 @@
 .icon-img img{
     height: 200px;
     margin-bottom: 4%;
+}
+
+.testimonials h3{
+    color: #153A81;
+    margin-top: 5%;
+}
+
+.t1{
+    background-image: url("./assets/Engineers.png");
+    background-size: 100% auto;
+}
+
+.t2{
+    background-image: url("./assets/welder.png");
+    background-size: 100% auto;
+}
+
+.t3{
+    background-image: url("./assets/Industrial\ Maintenance.jpg");
+    background-size: 100% auto;
+}
+
+.testimonial-background{
+    vertical-align: top;
+    padding:4%;
+    padding-left:10%;
+    padding-right:10%;
+    background-color: rgba(0, 0, 0, 0.65);
+    height:100%
+}
+
+.page-footer{
+    background-color: rgb(16%, 56%, 89%);
+}
+
+.footer-content{
+    
+}
+
+.footer-copyright{
+    background-color: #153A81 !important;
 }

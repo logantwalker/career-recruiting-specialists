@@ -125,7 +125,7 @@ const JobSearchSmall = () => {
                         <option
                             disabled
                             value=""
-                        >
+                            >
                             Industry
                         </option>
                         <option value="1">
