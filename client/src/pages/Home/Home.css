@@ -114,10 +114,10 @@
     background-color: rgb(16%, 56%, 89%);
 }
 
-.footer-content{
-    
-}
-
 .footer-copyright{
     background-color: #153A81 !important;
+}
+
+.hours{
+    /* padding-left: 8% */
 }
