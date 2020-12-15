@@ -61,4 +61,29 @@
     line-height: 2rem;
     margin-bottom:2%;
     margin-top:-2%;
+    margin-bottom: 5%
+}
+
+.about-head{
+    background-image: url('../Home/assets/macon.jpeg');
+    background-size: cover;
+    width:100%;
+    height: 300px;
+    color: rgb(16%, 56%, 89%);
+    display: flex !important;
+}
+
+.about-head h1{
+    align-self: flex-end;
+    width:100%;
+    padding-right: 5%;
+    padding-top: 1%;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 75% !important;
+    background-color: rgba(0,0,0,0.5) ;
+}
+
+.overview-text img{
+    border-radius: 20%;
 }

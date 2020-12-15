@@ -13,7 +13,7 @@ const Footer = () => {
                             <Icon tiny left={true}>access_time</Icon> 8:00 AM - 5:00 PM Monday - Friday
                             </h6>
                         <h6>
-                            <Icon tiny left={true}>phone</Icon>  706-840-0980
+                            <Icon tiny left={true}>phone</Icon>  478-319-3550
                             </h6>
                         <h6>
                             <Icon tiny left={true}>mail</Icon> joyce@careerrecruitingspecialists.com
