@@ -21,7 +21,7 @@ const JobOverview = () => {
             <div className='container overview-text'>
                 <h6>
                     Registering with an employment or job placement agency is similar to applying for a job with any other business.
-                    The only difference is that by registering with Impact Staffing, you are essentially applying for many jobs at once.
+                    The only difference is that by registering with Career Recruiting Specialists, you are essentially applying for many jobs at once.
                     Our recruiters will consider your past work experience, education, and career goals to determine if we have an opening that is a match for you.
                     If we do not currently have an opening, we will keep your application and continue to search for opportunities that match your qualifications.
                 </h6>
