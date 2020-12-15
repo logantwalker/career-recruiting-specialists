@@ -1,0 +1,64 @@
+.employer-overview{
+    margin-top: 76px;
+}
+
+
+.employer-head{
+    background-image: url('../Home/assets/femaleEng.png');
+    background-size: cover;
+    width:100%;
+    height: 300px;
+    color: rgb(16%, 56%, 89%);
+    display: flex !important;
+}
+
+.employer-head h1{
+    align-self: flex-end;
+    width:100%;
+    padding-right: 5%;
+    padding-top: 1%;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 75% !important;
+    background-color: rgba(0,0,0,0.5) ;
+}
+
+.employer-header{
+    background-color: rgb(16%, 56%, 89%);
+    height: 8rem;
+    color: white;
+    border-bottom: 2rem solid #153A81;
+}
+.header-title{
+    padding-left: 5%;
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.header-subtitle{
+    padding-left: 6%;
+    font-size: 1.2rem;
+}
+
+.overview-text{
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+.overview-text p{
+    line-height: 1.75rem;
+}
+
+.overview-text li{
+    padding-top: 3%;
+}
+
+.overview-text h3{
+    color: #153A81;
+}
+
+.overview-text h6{
+    line-height: 2rem;
+    margin-bottom:2%;
+    margin-top:-2%;
+}

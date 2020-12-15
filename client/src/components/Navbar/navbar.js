@@ -24,9 +24,8 @@ const Navbar = (props) => {
                                     id='1'
                                     title='For Employers'
                                     dropdown={true}>
-                                    <a className='dropdown-link' href='!#'>Placeholder</a>
-                                    <a className='dropdown-link' href='!#'>Placeholder</a>
-                                    <a className='dropdown-link' href='!#'>Placeholder</a>
+                                    <a className='dropdown-link' href='/employer-overview'>SPECIALTY SERVICE</a>
+                                    <a className='dropdown-link' href='!#'>REQUEST EMPLOYEE</a>
                                 </NavItem>
                             </Col>
                             <Col>
@@ -34,10 +33,13 @@ const Navbar = (props) => {
                                     id='2'
                                     title='For Job Seekers'
                                     dropdown={true}>
-                                    <a className='dropdown-link' href='!#'>Job Seekers FAQ</a>
-                                    <a className='dropdown-link' href='!#'>Current Job Openings</a>
-                                    <a className='dropdown-link' href='!#'>Online Application</a>
+                                    <a className='dropdown-link' href='/job-seekers'>OVERVIEW</a>
+                                    <a className='dropdown-link' href='!#'>JOB SEARCH</a>
+                                    <a className='dropdown-link' href='!#'>APPLY NOW</a>
                                 </NavItem>
+                            </Col>
+                            <Col>
+                                <NavItem>About Us</NavItem>
                             </Col>
                             <Col>
                                 <NavItem>Contact Us</NavItem>
