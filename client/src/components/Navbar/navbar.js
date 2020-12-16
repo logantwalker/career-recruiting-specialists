@@ -42,7 +42,7 @@ const Navbar = (props) => {
                                 <a href='/about'><NavItem>About Us</NavItem></a>
                             </Col>
                             <Col>
-                                <NavItem>Contact Us</NavItem>
+                                <a href='/contact'><NavItem>Contact Us</NavItem></a>
                             </Col>
                         </div>
 
