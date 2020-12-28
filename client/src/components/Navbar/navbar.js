@@ -25,7 +25,7 @@ const Navbar = (props) => {
                                     title='For Employers'
                                     dropdown={true}>
                                     <a className='dropdown-link' href='/employer-overview'>SPECIALTY SERVICE</a>
-                                    <a className='dropdown-link' href='!#'>REQUEST EMPLOYEE</a>
+                                    <a className='dropdown-link' href='/request-employee'>REQUEST EMPLOYEE</a>
                                 </NavItem>
                             </Col>
                             <Col>

@@ -1,0 +1,26 @@
+.request-form{
+    margin-top: 0;
+    margin-bottom:8%;
+}
+
+.submit-button{
+    float: right;
+    background-color:rgb(16%, 56%, 89%);
+}
+
+.submit-button:hover{
+    background-color: #153A81 !important;
+}
+
+#timing{
+    display: flex !important;
+    padding:0 !important;
+}
+
+.width-helper{
+    width: 200% !important;
+}
+
+.form-head{
+    margin-top: 3.5rem;
+}

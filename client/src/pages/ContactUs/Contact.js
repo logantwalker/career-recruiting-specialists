@@ -25,29 +25,37 @@ export default function ContactUs() {
             </div>
             <div className='employer-header'>
                 <div className='header-title'>
-                    MIDDLE GA'S STAFFING SPECIALISTS
+                    Middle GA'S Staffing Specialists
                     </div>
                 <div className='header-subtitle'>
                     Have a question? We are here to help!
                     </div>
             </div>
+            
             <div className='container'>
                 <Row>
                     <Col s={6} className='form-container'>
                         <form className="contact-form" onSubmit={sendEmail}>
-                            
-                            <input type="text" name="user_name" />
-                            <label>Name</label>
-                            
-                            <input type="email" name="user_email" />
-                            <label>Email</label>
-                            
-                            <input type="text" name="contact_number" />
-                            <label>Phone Number</label>
-                            
-                            <textarea className='materialize-textarea' name = "message" />
-                            <label>Message</label>
-                            <input className='submit-button' type="submit" value="Send" />
+                            <div className='input-field'>
+                                <label for='user_name'>Name</label>
+                                <input type="text" name="user_name" id="user_name" />
+                            </div>
+
+                            <div className='input-field'>
+                                <label for='user_email'>Email</label>
+                                <input type="email" name="user_email" id='user_email' />
+                            </div>
+
+                            <div className='input-field'>
+                                <label for='contact_number'>Phone Number</label>
+                                <input id='contact_number' type="text" name="contact_number" />
+                            </div>
+
+                            <div className='input-field'>
+                                <label for='message'>Message</label>
+                                <textarea className='materialize-textarea' name="message" id='message' />
+                            </div>
+                            <input className='submit-button btn' type="submit" value="Send" />
                         </form>
                     </Col>
                 </Row>
