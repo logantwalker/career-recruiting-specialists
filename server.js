@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = require("./routes");
+const mongoose = require('mongoose');
 // const session = require("express-session");
 
 // if (process.env.NODE_ENV === 'production') {
@@ -17,6 +18,33 @@ app.use(express.static('./client/build'));
 
 app.use(routes)
 
-app.listen(PORT, () =>
-    console.log(`🌎  ==> API Server now listening on http://localhost:${PORT}/`)
-);
+let MONGO_URL
+const MONGO_LOCAL_URL = "mongodb+srv://lwalker37:amv12v@cluster0.p7jgf.mongodb.net/Cluster0?retryWrites=true&w=majority"
+
+if (process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI, {
+        'useFindAndModify': false
+    })
+     .then(result =>{
+        app.listen(PORT, () =>
+            console.log(`🌎  ==> API Server now listening on http://localhost:${PORT}/`)
+        );
+    })
+     .catch(err => {
+         console.log(err)
+     })
+    MONGO_URL = process.env.MONGODB_URI
+} else {
+    mongoose.connect(MONGO_LOCAL_URL, {
+        'useFindAndModify': false
+    })
+     .then(result => {
+        app.listen(PORT, () =>
+            console.log(`🌎  ==> API Server now listening on http://localhost:${PORT}/`)
+        );
+    })
+        .catch(err => {
+            console.log(err)
+        })
+    MONGO_URL = MONGO_LOCAL_URL
+}
