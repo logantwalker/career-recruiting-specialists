@@ -3,7 +3,7 @@ const router = require("express").Router();
 const jobRoutes = require("./jobs");
 const applicantRoutes = require("./applicants");
 
-router.use("/job", jobRoutes);
+router.use("/jobs", jobRoutes);
 
 
 router.use("/applicant", applicantRoutes);

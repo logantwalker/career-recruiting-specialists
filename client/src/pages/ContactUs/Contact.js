@@ -1,10 +1,10 @@
 import {React} from 'react';
 import { Row, Col } from 'react-materialize';
+import Footer from '../../components/Footer/Footer';
 import emailjs from 'emailjs-com';
 import './contact.css';
 import 'materialize-css';
 
-// import './ContactUs.css';
 
 export default function ContactUs() {
 
@@ -60,6 +60,7 @@ export default function ContactUs() {
                     </Col>
                 </Row>
             </div>
+            <Footer/>
         </div>
     );
 }

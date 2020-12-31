@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Button, Icon } from 'react-materialize';
+import Footer from '../../components/Footer/Footer';
 import JobSearchSmall from '../../components/JobSearchSmall/JobSearchSmall';
 import 'materialize-css';
 
@@ -33,6 +34,7 @@ const JobOverview = () => {
                     SEARCH JOBS
                 </Button>
             </div>
+            <Footer/>
         </div>
     )
 }

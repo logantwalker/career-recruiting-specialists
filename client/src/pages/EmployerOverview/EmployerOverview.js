@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Button, Icon } from 'react-materialize';
+import Footer from '../../components/Footer/Footer';
 import './employers.css';
 import 'materialize-css';
 
@@ -81,6 +82,7 @@ const EmployerOverview = () => {
                     </Button>
                 </a>
             </div>
+            <Footer/>
         </div>
     )
 }

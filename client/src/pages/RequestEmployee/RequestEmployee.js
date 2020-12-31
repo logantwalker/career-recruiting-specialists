@@ -1,5 +1,6 @@
 import { React } from 'react';
 import { Row, Col, Select } from 'react-materialize';
+import Footer from '../../components/Footer/Footer';
 import emailjs from 'emailjs-com';
 import './RequestEmployee.css';
 import 'materialize-css';
@@ -105,7 +106,8 @@ export default function RequestEmployee() {
                         </form>
                     </Col>
                 </Row>
-            </div>I
+            </div>
+            <Footer/>
         </div>
     );
 }

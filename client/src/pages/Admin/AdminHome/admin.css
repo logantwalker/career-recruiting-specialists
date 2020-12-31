@@ -1,0 +1,29 @@
+.admin{
+    margin-top: 76px;
+}
+
+.directory-container{
+    margin-bottom: 0 !important;
+}
+
+.side-nav{
+    padding:0 !important;
+    height: 89.25vh;
+    background-color: rgb(16%, 56%, 89%);
+    -moz-box-shadow: 3px 0 3px 0 #555;
+    -webkit-box-shadow: 3px 0 3px 0 #555;
+    box-shadow: 3px 0 3px 0 #555;
+}
+
+.sidenav-item{
+    height: 3.5rem;
+    padding-top: 1rem;
+    text-align: center !important;
+    width: 100%;
+    border-bottom: 1px solid white;
+    color:white;
+    font-weight: 700;
+}
+.directory-window{
+    height: 89.25vh
+}

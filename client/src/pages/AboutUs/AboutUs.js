@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col} from 'react-materialize';
+import Footer from '../../components/Footer/Footer';
 import joyce from './assets/Joyce.jpg';
 import 'materialize-css';
 
@@ -77,6 +78,7 @@ const AboutUs = () => {
                     </h6>
                 </Row>
             </div>
+            <Footer/>
         </div>
     )
 }

@@ -1,10 +1,9 @@
 import axios from "axios";
 
 const API = {
-    // // Gets books from the Google API
-    // getBooks: function (q) {
-    //     return axios.get("/api/google", { params: { q: "title:" + q } });
-    // },
+    getJobs: function (q) {
+        return axios.get("/api/jobs");
+    }
     // // Gets all saved books
     // getSavedBooks: function () {
     //     return axios.get("/api/books");

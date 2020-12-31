@@ -1,5 +1,6 @@
 import React from 'react';
 import { Parallax, Row, Col, Button, Carousel, Icon } from 'react-materialize';
+import Footer from '../../components/Footer/Footer';
 import img1 from './assets/welder.png';
 import img2 from './assets/carousel2.jpg';
 import EHSicon from './assets/EHS-icon.png';
@@ -145,6 +146,7 @@ const Home = () => {
                     </div>
                 </Carousel>
             </div>
+            <Footer/>
         </div>
     )
 }
