@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+//user facing pages & components
 import Navbar from './components/Navbar/navbar';
 import Home from './pages/Home/Home';
 import EmployerOverview from './pages/EmployerOverview/EmployerOverview'
@@ -9,7 +11,9 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/ContactUs/Contact';
 import NotFound from './pages/NotFound/NotFound';
 
+//admin components
 import AdminHome from './pages/Admin/AdminHome/AdminHome';
+import AddNewJob from './pages/Admin/AddNewJob/AddNewJob';
 import './App.css';
 
 
@@ -26,6 +30,7 @@ function App() {
         <Route exact path='/about' component={AboutUs} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/admin' component={AdminHome} />
+        <Route exact path='/admin/add-job' component={AddNewJob} />
         <Route component={NotFound}/>
       </Switch>
     </Router>

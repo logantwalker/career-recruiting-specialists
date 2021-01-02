@@ -1,19 +1,19 @@
 import React from 'react';
-import Employee from './Employee/Employee';
+import JobListItem from './JobListItem';
 
-const employees = (props) => {
+const JobList = (props) => {
     return (
-        props.employees.map((employee, i) => {
+        props.jobs.map((job, i) => {
             return (
-                <Employee
-                    key={employee.id}
-                    name={employee.name}
-                    email={employee.email}
-                    phone={employee.phone}
-                    start={employee.startDate} />
+                <JobListItem className='hoverable'
+                    key={job._id}
+                    title={job.title}
+                    industry={job.industry}
+                    company={job.company}
+                    location={job.location} />
             )
         })
     );
 }
 
-export default employees;
+export default JobList;

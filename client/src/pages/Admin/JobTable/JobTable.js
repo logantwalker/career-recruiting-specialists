@@ -1,4 +1,5 @@
 import React from 'react';
+import JobList from './JobList/JobList';
 import 'materialize-css';
 import { Table } from 'react-materialize';
 
@@ -24,7 +25,7 @@ export default function JobTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <JobList jobs={props.jobs}/>
                 </tbody>
             </Table>
         </div>

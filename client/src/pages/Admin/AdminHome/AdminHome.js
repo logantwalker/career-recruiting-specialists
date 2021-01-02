@@ -1,4 +1,4 @@
-import { React, useEffect, useState} from 'react';
+import { React, useEffect, useState } from 'react';
 import { Row, Col } from 'react-materialize';
 import ApplicantTable from '../ApplicantTable/ApplicantTable';
 import JobTable from '../JobTable/JobTable';
@@ -10,18 +10,24 @@ export default function AdminHome() {
     const [directoryState, changeDir] = useState({
         render: (<div></div>)
     });
-    
-    useEffect(()=>{
+
+    const [jobState, updateJobs] = useState({
+        jobs: []
+    })
+
+
+    useEffect(() => {
         fetchJobs();
         fetchApplicants();
-    });
+    }, []);
 
     const fetchJobs = () => {
         API.getJobs()
-            .then(res =>{
-                console.log(res.data[0])
-            })
-        
+            .then(res => {
+                updateJobs({
+                    jobs: res.data
+                })
+            });
     }
 
     const fetchApplicants = () => {
@@ -30,13 +36,13 @@ export default function AdminHome() {
 
     const RenderJobs = () => {
         changeDir({
-            render: (<JobTable/>)
+            render: (<JobTable jobs={jobState.jobs} />)
         })
     }
 
     const RenderApplicants = () => {
         changeDir({
-            render: (<ApplicantTable/>)
+            render: (<ApplicantTable />)
         })
     }
 
@@ -52,12 +58,16 @@ export default function AdminHome() {
                         onClick={RenderApplicants}>
                         View Applicants
                     </div>
-                    <div className='sidenav-item hoverable'>
-                        Add New Job Listing
-                    </div>
-                    <div className='sidenav-item hoverable'>
-                        Add New Applicant
-                    </div>
+                    <a href='/admin/add-job'>
+                        <div className='sidenav-item hoverable'>
+                            Add New Job Listing
+                        </div>
+                    </a>
+                    <a>
+                        <div className='sidenav-item hoverable'>
+                            Add New Applicant
+                        </div>
+                    </a>
                 </Col>
                 <Col s={10} className='directory-window'>
                     {directoryState.render}

@@ -15,6 +15,10 @@
     box-shadow: 3px 0 3px 0 #555;
 }
 
+.side-nav a{
+    color: white;
+}
+
 .sidenav-item{
     height: 3.5rem;
     padding-top: 1rem;
