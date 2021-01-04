@@ -29,5 +29,7 @@
     font-weight: 700;
 }
 .directory-window{
-    height: 89.25vh
+    height: 89.25vh;
+    padding:0 !important;
+    overflow-y: scroll;
 }

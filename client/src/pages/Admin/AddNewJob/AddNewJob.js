@@ -85,7 +85,7 @@ export default function AddNewJob() {
     }
 
     return (
-        <div className='admin addJobPage'>
+        <div className='addJobPage'>
             <Row className='container addJob-fields'>
                 <Col s={10} className='job-inputs'>
                     <h4>Add a new job!</h4>

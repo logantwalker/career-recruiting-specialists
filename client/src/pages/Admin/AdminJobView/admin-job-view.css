@@ -1,0 +1,7 @@
+.edit-btn{
+    margin-right:1% !important;
+}
+
+.delete-btn:hover{
+    background-color: red !important;
+}

@@ -3,17 +3,17 @@ import 'materialize-css';
 
 const JobListItem = (props) => {
     return (
-        <tr>
-            <td>
+        <tr onClick={props.click} id={props.id} >
+            <td id={props.id}>
                 {props.title}
             </td>
-            <td>
+            <td id={props.id}>
                 {props.industry}
             </td>
-            <td>
+            <td id={props.id}>
                 {props.company}
             </td>
-            <td>
+            <td id={props.id}>
                 {props.location}
             </td>
         </tr>

@@ -1,10 +1,11 @@
 import React from 'react';
-import JobList from './JobList/JobList';
+// import JobList from './JobList/JobList';
+import JobListItem from './JobList/JobListItem';
 import 'materialize-css';
 import { Table } from 'react-materialize';
 
 export default function JobTable(props) {
-
+    
     return(
         <div className='job-table'>
             <Table centered={true} hoverable={true} >
@@ -25,7 +26,18 @@ export default function JobTable(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <JobList jobs={props.jobs}/>
+                    {props.jobs.map((job, i) => {
+                        return (
+                            <JobListItem className='hoverable'
+                                key={job._id}
+                                id={i}
+                                title={job.title}
+                                industry={job.industry}
+                                company={job.company}
+                                location={job.location}
+                                click={props.click}/>
+                        )
+                    })}
                 </tbody>
             </Table>
         </div>

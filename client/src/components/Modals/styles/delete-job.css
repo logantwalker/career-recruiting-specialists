@@ -1,0 +1,38 @@
+.modal-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 300;
+}
+
+.modal-content{
+    position: fixed;
+    top: 10vh;
+    left: 20vw;
+    width: 60vw;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.modal-header{
+    text-align: center;
+}
+
+.confirmation{
+    padding-left: 36%;
+}
+
+.cfrm-btn{
+    margin-right: 10%;
+}
+
+.yes-btn:hover{
+    background-color: green !important;
+}
+
+.no-btn:hover{
+    background-color: red !important;
+}

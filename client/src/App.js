@@ -13,7 +13,6 @@ import NotFound from './pages/NotFound/NotFound';
 
 //admin components
 import AdminHome from './pages/Admin/AdminHome/AdminHome';
-import AddNewJob from './pages/Admin/AddNewJob/AddNewJob';
 import './App.css';
 
 
@@ -30,7 +29,6 @@ function App() {
         <Route exact path='/about' component={AboutUs} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/admin' component={AdminHome} />
-        <Route exact path='/admin/add-job' component={AddNewJob} />
         <Route component={NotFound}/>
       </Switch>
     </Router>

@@ -2,9 +2,12 @@ import { React, useEffect, useState } from 'react';
 import { Row, Col } from 'react-materialize';
 import ApplicantTable from '../ApplicantTable/ApplicantTable';
 import JobTable from '../JobTable/JobTable';
+import AddNewJob from '../AddNewJob/AddNewJob';
+import AdminJobView from '../AdminJobView/AdminJobView';
 import API from '../../../utils/API';
 import 'materialize-css';
 import './admin.css';
+
 
 export default function AdminHome() {
     const [directoryState, changeDir] = useState({
@@ -14,7 +17,6 @@ export default function AdminHome() {
     const [jobState, updateJobs] = useState({
         jobs: []
     })
-
 
     useEffect(() => {
         fetchJobs();
@@ -36,13 +38,25 @@ export default function AdminHome() {
 
     const RenderJobs = () => {
         changeDir({
-            render: (<JobTable jobs={jobState.jobs} />)
+            render: (<JobTable jobs={jobState.jobs} click={(e) => RenderJobView(e)} />)
+        })
+    }
+
+    const RenderAddNewJob = () => {
+        changeDir({
+            render: (<AddNewJob />)
         })
     }
 
     const RenderApplicants = () => {
         changeDir({
             render: (<ApplicantTable />)
+        })
+    }
+
+    const RenderJobView = (e) => {
+        changeDir({
+            render: (<AdminJobView job={jobState.jobs[e.target.id]} />)
         })
     }
 
@@ -58,11 +72,10 @@ export default function AdminHome() {
                         onClick={RenderApplicants}>
                         View Applicants
                     </div>
-                    <a href='/admin/add-job'>
-                        <div className='sidenav-item hoverable'>
-                            Add New Job Listing
-                        </div>
-                    </a>
+                    <div className='sidenav-item hoverable'
+                        onClick={RenderAddNewJob}>
+                        Add New Job Listing
+                    </div>
                     <a>
                         <div className='sidenav-item hoverable'>
                             Add New Applicant
