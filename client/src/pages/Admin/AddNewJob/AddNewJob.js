@@ -215,12 +215,14 @@ export default function AddNewJob() {
                         label="High"
                     />
                     <Col s={12}>
-                        <Button className='title-btn right'
-                            node="button"
-                            waves='light'
-                            onClick={postJob}>
-                            Add Job
-                        </Button>
+                        <a href='/admin'>
+                            <Button className='title-btn right'
+                                node="button"
+                                waves='light'
+                                onClick={postJob}>
+                                Add Job
+                            </Button>
+                        </a>
                     </Col>
                 </Col>
             </Row>

@@ -11,7 +11,13 @@ import './admin.css';
 
 export default function AdminHome() {
     const [directoryState, changeDir] = useState({
-        render: (<div></div>)
+        render: (
+        <div>
+            <Col>
+                <h4>Use the Sidebar to get started!</h4>
+            </Col>
+        </div>
+        )
     });
 
     const [jobState, updateJobs] = useState({
@@ -30,6 +36,7 @@ export default function AdminHome() {
                     jobs: res.data
                 })
             });
+        
     }
 
     const fetchApplicants = () => {
@@ -56,7 +63,13 @@ export default function AdminHome() {
 
     const RenderJobView = (e) => {
         changeDir({
-            render: (<AdminJobView job={jobState.jobs[e.target.id]} />)
+            render: (<AdminJobView job={jobState.jobs[e.target.id]} navi={()=>deleteNavi}/>)
+        })
+    }
+
+    const deleteNavi = () =>{
+        changeDir({
+            render: (<JobTable jobs={jobState.jobs} click={(e) => RenderJobView(e)} />)
         })
     }
 

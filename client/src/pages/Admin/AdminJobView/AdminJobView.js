@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Row, Col, TextInput, Textarea, Select, Button, Modal } from 'react-materialize';
+import { Row, Col, TextInput, Textarea, Select, Button} from 'react-materialize';
 import DeleteJobModal from '../../../components/Modals/DeleteJobModal';
 import API from '../../../utils/API'
 import './admin-job-view.css'
@@ -93,7 +93,7 @@ export default function AdminJobView(props) {
     const handleUpdate = () => {
         let changed = checkedChange();
         if (changed) {
-            alert('You have made some updates to this job!')
+            API.updateJob(Job, props.job._id).then(res => console.log(res)).catch(err => console.log(err));
         }
         else {
             alert('You have not made any changes to this job!')
@@ -101,10 +101,8 @@ export default function AdminJobView(props) {
     }
 
     const handleDelete = () => {
-        alert('You deleted this job!')
+        API.deleteJob(props.job._id).then().catch(err => console.log(err))
     }
-
-
 
     const captureField = (e) => {
         switch (e.target.id) {
@@ -343,12 +341,14 @@ export default function AdminJobView(props) {
                             label="High"
                         />
                         <Col s={12}>
-                            <Button className='title-btn right'
-                                node="button"
-                                waves='light'
-                                onClick={handleUpdate}>
-                                Submit Changes
-                        </Button>
+                            <a href='/admin'>
+                                <Button className='title-btn right'
+                                    node="button"
+                                    waves='light'
+                                    onClick={handleUpdate}>
+                                    Submit Changes
+                                </Button>
+                            </a>
                         </Col>
                     </Col>
                 </Row>
@@ -357,6 +357,7 @@ export default function AdminJobView(props) {
                 show={modalStates.delete}
                 hide={hideDeleteModal} 
                 delete={handleDelete}/>
+
         </div>
     )
 }

@@ -17,14 +17,16 @@ const DeleteJobModal = (props) => {
                 </p>
                     <Row className='confirmation'>
                         <Col s={2} className='cfrm-btn '>
-                            <Button
-                                className='yes-btn title-btn'
-                                onClick={()=>{
-                                    props.delete();
-                                    props.hide();
-                                }}>
-                                YES
-                        </Button>
+                            <a href='/admin'>
+                                <Button
+                                    className='yes-btn title-btn'
+                                    onClick={() => {
+                                        props.delete();
+                                        props.hide();
+                                    }}>
+                                    YES
+                                </Button>
+                            </a>
                         </Col>
                         <Col s={2}  >
                             <Button
