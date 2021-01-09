@@ -27,6 +27,14 @@ const jobSchema = new Schema({
         type: String,
         required: true
     },
+    duties: {
+        type: Array,
+        required: true
+    },
+    qualifications: {
+        type: Array,
+        required: true
+    },
     location: {
         type: String,
         required: true

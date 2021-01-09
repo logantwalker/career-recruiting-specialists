@@ -93,7 +93,7 @@ export default function AdminJobView(props) {
     const handleUpdate = () => {
         let changed = checkedChange();
         if (changed) {
-            API.updateJob(Job, props.job._id).then(res => console.log(res)).catch(err => console.log(err));
+            API.updateJob(Job, props.job._id).then().catch(err => console.log(err));
         }
         else {
             alert('You have not made any changes to this job!')

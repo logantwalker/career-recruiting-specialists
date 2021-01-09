@@ -12,6 +12,8 @@ const API = {
             type: q.jobType,
             shift: q.shift,
             description: q.description,
+            duties: q.duties,
+            qualifications: q.quals,
             location: q.location,
             salary: `${q.salaryLow} - ${q.salaryHigh}`
         }
@@ -25,6 +27,8 @@ const API = {
             type: q.jobType,
             shift: q.shift,
             description: q.description,
+            duties: q.duties,
+            qualifications: q.quals,
             location: q.location,
             salary: `${q.salaryLow} - ${q.salaryHigh}`
         }

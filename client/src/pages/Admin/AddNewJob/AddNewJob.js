@@ -1,8 +1,10 @@
 import { React, useState } from 'react';
 import { Row, Col, TextInput, Textarea, Select, Button } from 'react-materialize';
+import MultiField from '../../../components/Admin/MultiField/MultiField';
 import API from '../../../utils/API'
 import './addJob.css'
 import 'materialize-css';
+
 
 export default function AddNewJob() {
     const [newJob, updateFields] = useState({
@@ -12,6 +14,8 @@ export default function AddNewJob() {
         jobType: '',
         shift: '',
         description: '',
+        duties:[''],
+        quals: [''],
         location: '',
         salaryLow: '',
         salaryHigh: ''
@@ -74,6 +78,74 @@ export default function AddNewJob() {
                 })
                 break;
 
+        }
+    }
+
+    const captureMulti = (e) =>{
+        let [type,index] = e.target.id.split('-');
+        
+        switch(type){
+            case 'd':
+                let initialD = newJob.duties;
+                initialD[index] = e.target.value
+                updateFields({
+                    ...newJob,
+                    duties:initialD
+                })
+                break
+            case 'q':
+                let initialQ = newJob.duties;
+                initialQ[index] = e.target.value
+                updateFields({
+                    ...newJob,
+                    quals: initialQ
+                })
+                break
+        }
+    }
+
+    const addDuty = () =>{
+        let plusOne = newJob.duties;
+        plusOne.push('');
+        updateFields({
+            ...newJob,
+            duties:plusOne
+        })
+    }
+    const addQualification = () =>{
+        let plusOne = newJob.quals;
+        plusOne.push('');
+        updateFields({
+            ...newJob,
+            quals: plusOne
+        })
+    }
+
+    const removeD = (e) =>{
+        let [type, index] = e.target.id.split('-');
+        switch(type){
+            case 'd':
+                let removeOne = newJob.duties;
+                removeOne.splice(index, 1);
+                updateFields({
+                    ...newJob,
+                    duties: removeOne
+                });
+                break
+        }
+    }
+
+    const removeQ = (e) =>{
+        let [type,index] = e.target.id.split('-');
+        switch(type){
+            case 'q':
+                let removeOneQ = newJob.quals;
+                removeOneQ.splice(index, 1);
+                updateFields({
+                    ...newJob,
+                    quals: removeOneQ
+                });
+                break
         }
     }
 
@@ -196,11 +268,15 @@ export default function AddNewJob() {
                         id="description"
                         label="Job Description"
                     />
+
                     <TextInput s={8}
                         onChange={(e) => captureField(e)}
                         id="location"
                         label="Job Location"
                     />
+
+                    
+
                     <Col s={12}>
                         <h6>Salary Range:</h6>
                     </Col>
@@ -214,6 +290,20 @@ export default function AddNewJob() {
                         id="salaryHigh"
                         label="High"
                     />
+                    
+                    <MultiField
+                        type='d'
+                        items={newJob.duties}
+                        record={captureMulti}
+                        add={addDuty}
+                        remove={removeD}/>
+                    <MultiField
+                        type='q'
+                        items={newJob.quals}
+                        record={captureMulti}
+                        add={addQualification}
+                        remove={removeQ} />
+
                     <Col s={12}>
                         <a href='/admin'>
                             <Button className='title-btn right'
