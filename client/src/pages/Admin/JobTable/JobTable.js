@@ -1,5 +1,4 @@
 import React from 'react';
-// import JobList from './JobList/JobList';
 import JobListItem from './JobList/JobListItem';
 import 'materialize-css';
 import { Table } from 'react-materialize';

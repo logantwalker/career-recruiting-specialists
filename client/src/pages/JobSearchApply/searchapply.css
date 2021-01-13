@@ -1,0 +1,35 @@
+.job-search-apply{
+    margin-top: 76px;
+    background-color: #153A81;
+}
+
+.search{
+    margin-bottom: 0 !important;
+    padding-bottom: 3%;
+}
+
+.search-feature{
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.search-bars{
+    padding-left:0 !important;
+}
+
+.jsa-content{
+    background-color: white;
+}
+
+.job-search-table{
+    padding:0 !important;
+    height: 80vh;
+    border: 1px solid gray;
+    border-radius: 20px;
+    overflow-y: scroll;
+}
+
+.job-title-head{
+    width: 30% !important;
+}

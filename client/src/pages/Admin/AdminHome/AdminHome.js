@@ -24,6 +24,10 @@ export default function AdminHome() {
         jobs: []
     })
 
+    const [appState, updateApps] = useState({
+        applicants: []
+    })
+
     useEffect(() => {
         fetchJobs();
         fetchApplicants();
@@ -40,7 +44,12 @@ export default function AdminHome() {
     }
 
     const fetchApplicants = () => {
-        console.log('fetching applicants...')
+        API.getApplicants()
+            .then(res =>{
+                updateApps({
+                    applicants: res.data
+                })
+            })
     }
 
     const RenderJobs = () => {
@@ -57,7 +66,7 @@ export default function AdminHome() {
 
     const RenderApplicants = () => {
         changeDir({
-            render: (<ApplicantTable />)
+            render: (<ApplicantTable apps={appState.applicants} />)
         })
     }
 
@@ -89,11 +98,6 @@ export default function AdminHome() {
                         onClick={RenderAddNewJob}>
                         Add New Job Listing
                     </div>
-                    <a>
-                        <div className='sidenav-item hoverable'>
-                            Add New Applicant
-                        </div>
-                    </a>
                 </Col>
                 <Col s={10} className='directory-window'>
                     {directoryState.render}

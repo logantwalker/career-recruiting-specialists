@@ -5,5 +5,11 @@ module.exports = {
         db.Applicant.create(req.body)
             .then(dbApp => res.json(dbApp))
             .catch(err => res.status(422).json(err));
+    },
+
+    findAll: function (req, res) {
+        db.Applicant.find(req.query)
+            .then(dbApp => res.json(dbApp))
+            .catch(err => res.status(422).json(err));
     }
 }

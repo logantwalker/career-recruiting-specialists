@@ -2,7 +2,7 @@ const router = require("express").Router();
 const applicantController = require("../../controllers/applicantController");
 
 router.route("/")
-    // .get(applicantController.findAll)
+    .get(applicantController.findAll)
     .post(applicantController.create);
 
 

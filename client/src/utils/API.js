@@ -37,6 +37,10 @@ const API = {
     deleteJob: function (id) {
         return axios.delete("/api/jobs/" + id);
     },
+
+    getApplicants: function(){
+        return axios.get("/api/applicants");
+    }
 };
 
 export default API;

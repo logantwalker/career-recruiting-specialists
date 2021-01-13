@@ -6,7 +6,7 @@ const applicantRoutes = require("./applicants");
 router.use("/jobs", jobRoutes);
 
 
-router.use("/applicant", applicantRoutes);
+router.use("/applicants", applicantRoutes);
 
 
 router.use(function (req, res) {
