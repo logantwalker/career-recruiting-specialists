@@ -27,11 +27,12 @@ export default function JobSearchTable(props) {
                     return (
                         <JobSearchItem className='hoverable'
                             key={job._id}
-                            id={i}
+                            id={job._id}
                             title={job.title}
                             salary={job.salary}
                             company={job.company}
                             location={job.location}
+                            click={props.click}
                              />
                     )
                 })}

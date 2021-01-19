@@ -1,6 +1,7 @@
 .job-search-apply{
     margin-top: 76px;
     background-color: #153A81;
+   
 }
 
 .search{
@@ -19,6 +20,8 @@
 }
 
 .jsa-content{
+    
+    box-shadow: 9px 10px 15px -4px rgba(0, 0, 0, 0.5);
     background-color: white;
 }
 

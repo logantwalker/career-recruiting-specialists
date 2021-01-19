@@ -12,6 +12,11 @@ module.exports = {
             .then(dbJob => res.json(dbJob))
             .catch(err => res.status(422).json(err));
     },
+    findOne: function(req, res) {
+        db.Job.findById(req.params.id)
+            .then(dbJob => res.json(dbJob))
+            .catch(err => res.status(422).json(err))
+    },
 
     update: function (req, res) {
         db.Job.findOneAndUpdate({ id: req.params._id }, req.body)

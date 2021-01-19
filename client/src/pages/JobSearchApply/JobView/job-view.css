@@ -1,0 +1,58 @@
+.job-feature{
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top:76px;
+}
+
+.job-title{
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.desc-section{
+    padding-top: 1%;
+    padding-left: 2%;
+}
+
+.desc-head{
+    margin-top: 1rem;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.desc-sub{
+    font-weight: 600;
+}
+
+.summary{
+    margin-top: 0;
+    padding-top:0;
+    padding-bottom: 2%;
+    margin-bottom: 0;
+}
+.sum-sub{
+    font-weight: 500;
+    padding-top: 2%;
+}
+
+.small-text{
+    font-weight: normal;
+    color: rgb(50,50,50)
+}
+
+.duty-list{
+    list-style-type: circle !important;
+    margin:0;
+    padding-top: 1%;
+    padding-bottom: 3%;
+}
+
+.list-wrapper{
+    padding-left: 4%;
+    padding-right:4%
+}
+
+ul li{
+    list-style-type: circle !important;
+}

@@ -4,6 +4,9 @@ const API = {
     getJobs: function (q) {
         return axios.get("/api/jobs");
     },
+    getOneJob: function (id) {
+        return axios.get("/api/jobs/" + id);
+    },
     postNewJob: function (q) {
         let jobData = {
             title: q.jobTitle,
@@ -19,7 +22,7 @@ const API = {
         }
         return axios.post("/api/jobs", jobData)
     },
-    updateJob: function (q,id) {
+    updateJob: function (q, id) {
         let jobData = {
             title: q.jobTitle,
             industry: q.industry,
@@ -38,7 +41,7 @@ const API = {
         return axios.delete("/api/jobs/" + id);
     },
 
-    getApplicants: function(){
+    getApplicants: function () {
         return axios.get("/api/applicants");
     }
 };

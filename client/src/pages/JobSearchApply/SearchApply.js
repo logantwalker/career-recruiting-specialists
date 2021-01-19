@@ -5,8 +5,10 @@ import API from '../../utils/API';
 import 'materialize-css';
 import './searchapply.css';
 import JobSearch from './JobSearch/JobSearch';
+import JobView from './JobView/JobView';
 
-export default function SearchApply() {
+export default function SearchApply(props) {
+
 
     const [jobState, updateJobs] = useState({
         jobs: []
@@ -14,7 +16,7 @@ export default function SearchApply() {
 
     const [directoryState, changeDir] = useState({
         render: (
-            <JobSearch jobs={jobState.jobs} />
+            <JobSearch jobs={jobState.jobs} click={renderJobView} />
         )
     });
 
@@ -22,43 +24,45 @@ export default function SearchApply() {
         fetchJobs();
     }, []);
 
+
     const fetchJobs = () => {
         API.getJobs()
             .then(res => {
-
-                initalJobRender(res.data)
                 updateJobs({
                     jobs: res.data
                 })
-                
+                initalJobRender(res.data)
             });
     }
 
+    function renderJobView(e) {
+        props.history.push('/job-search/' + e.target.id)
+    }
+
     const initalJobRender = (jobArr) => {
-        console.log(jobArr)
         changeDir({
             render: (
-                <JobSearch jobs={jobArr} />
+                <JobSearch jobs={jobArr} click={renderJobView} />
             )
         })
     }
 
-    const renderJobSearch = () =>{
+    const renderJobSearch = () => {
         changeDir({
             render: (
-                <JobSearch jobs={jobState.jobs} />
+                <JobSearch jobs={jobState.jobs} click={renderJobView} />
             )
         })
     }
 
-    return(
+    return (
         <div>
             <div className='job-search-apply'>
                 <div className='container jsa-content'>
                     {directoryState.render}
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

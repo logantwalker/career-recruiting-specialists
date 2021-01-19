@@ -23,7 +23,7 @@ export default function JobSearch(props) {
                         icon={<Icon>location_on</Icon>}/>
                 </Col>
                 <Col s={12} className='job-search-table'>
-                    <JobSearchTable jobs={props.jobs}/>
+                    <JobSearchTable jobs={props.jobs} click={props.click}/>
                 </Col>
             </div>
         </Row>

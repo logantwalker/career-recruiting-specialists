@@ -3,7 +3,7 @@ import 'materialize-css';
 
 const JobSearchItem = (props) => {
     return (
-        <tr id={props.id} >
+        <tr id={props.id} onClick={e => props.click(e)} >
             <td id={props.id}>
                 {props.title}
             </td>
