@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Row, Col, TextInput, Textarea, Select, Button } from 'react-materialize';
+import { Row, Col, TextInput, Textarea, Select, Button, Icon } from 'react-materialize';
 import Footer from '../../../components/Footer/Footer'
 import API from '../../../utils/API';
 import 'materialize-css';
@@ -15,13 +15,25 @@ export default function JobApply(props) {
         last_name:'',
         email:'',
         phone:'',
-        job_applied: props.match.params.job
+        job_applied: props.match.params.job,
+        education:{
+            attained: '',
+            studyField: null
+        },
+        experience:{
+            previousJobs:['','',''],
+            skills:[]
+        },
+        relocate: '',
+        travel: ''
     });
 
     const [appState, updateApp] = useState({
         job:{},
+        degree: false,
         certs: false,
-        certNum: 0
+        certNum: 0,
+        numSkill: 0
     })
 
     function getJobData(id) {
@@ -44,6 +56,42 @@ export default function JobApply(props) {
         }
     }
 
+    const fieldOfStudy = (e) =>{
+        if(e.target.value === 'some-college' ||
+            e.target.value === 'associates' ||
+            e.target.value === 'bachelors' ||
+            e.target.value === 'masters-plus'){
+                updateApp({
+                    ...appState,
+                    degree: true
+                })
+        }
+        else {
+            updateApp({
+                ...appState,
+                degree: false
+            })
+        }
+    }
+
+    const addSkill = () =>{
+        let curCount = appState.numSkill;
+        curCount++;
+        updateApp({
+            ...appState,
+            numSkill: curCount
+        })
+    }
+
+
+    let studyFields;
+    if(appState.degree){
+        studyFields = (
+                <TextInput s={6}
+                    id='study-field'
+                    label='Field Of Study'/>)
+    }
+
     let certFields;
     if(appState.certs){
         certFields=(
@@ -58,6 +106,19 @@ export default function JobApply(props) {
         )
     }
 
+    let skillsField=[];
+    if(appState.numSkill){
+        for(let i=0; i<appState.numSkill; i++){
+            skillsField.push(
+                <Col s={12} className='empty-col'>
+                    <TextInput s={6}
+                        id={`skill${i}`}
+                        label='Skill'/>
+                </Col>
+            )
+        }
+    }
+
     return (
         <div>
             <div className='job-search-apply'>
@@ -66,6 +127,7 @@ export default function JobApply(props) {
                         <h5>{appState.job.title}</h5>
                         <div className='divider'></div>
                         <Col s={12} className='app-fields'>
+
                             <Col s={12} className='empty-col'>
                                 <h6 className='section-head'>Personal Information:</h6>
                             </Col>
@@ -94,12 +156,14 @@ export default function JobApply(props) {
                                     placeholder='City, State (e.g. Atlanta, GA)' />
                             </Col>
 
+
                             <Col className='empty-col' s={12}>
                                 <h6 className='section-head'>Education & Certifications:</h6>
                             </Col>
                             <Col className='empty-col' s={12}>
                                 <Select
                                     id="edu-level"
+                                    onChange={(e)=>fieldOfStudy(e)}
                                     multiple={false}
                                     s={6}
                                     options={{
@@ -140,10 +204,13 @@ export default function JobApply(props) {
                                     <option value="bachelors">
                                         Bachelor's Degree
                                     </option>
-                                    <option value="master">
+                                    <option value="masters-plus">
                                         Master's Degree or Higher
                                     </option>
                                 </Select>
+                            </Col>
+                            <Col className='empty-col' s={12}>
+                                {studyFields}
                             </Col>
                             <Col s={12} className='empty-col'>
                                 <p className='section-subhead'>
@@ -186,6 +253,48 @@ export default function JobApply(props) {
                             <Col s={12} className='empty-col'>
                                 {certFields}
                             </Col>
+
+
+                            <Col className='empty-col' s={12}>
+                                <h6 className='section-head'>Work Experience:</h6>
+                            </Col>
+                            <Col className='empty-col' s={12}>
+                                <p className='section-subhead'>
+                                    Previous Three Job Titles
+                                </p>
+                                <TextInput s={4}
+                                    id='job1'
+                                    label='Job Title'/>
+                                <TextInput s={4} 
+                                    id='job2'
+                                    label='Job Title'/>
+                                <TextInput s={4} 
+                                    id='job3'
+                                    label='Job Title'/>
+                            </Col>
+                            <Col className='empty-col' s={12}>
+                                <p className='section-subhead '>
+                                    Would you like to add any relevant skills?
+                                    <span className='skills-btn'>
+                                        <Button
+                                            small={true}
+                                            className='title-btn'
+                                            floating
+                                            icon={<Icon>add</Icon>}
+                                            onClick={()=> addSkill()}>
+                                        </Button>
+                                    </span>
+                                </p>
+                            </Col>
+                            <div className='skills-fields'>
+                                {skillsField}
+                            </div>
+                            <Row className='apply right'>
+                                <Col s={12}>
+                                    <Button className='title-btn'
+                                        onClick={()=>console.log('applied!')}>APPLY</Button>
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </div>
