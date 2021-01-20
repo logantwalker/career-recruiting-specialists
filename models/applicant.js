@@ -19,7 +19,10 @@ const applicantSchema = new Schema({
         type: String,
         required: true
     },
-    jobs_applied: Array,
+    job_applied: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true

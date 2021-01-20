@@ -1,20 +1,20 @@
 import { React, useState, useEffect } from 'react';
-import { Row, Col, Icon } from 'react-materialize';
+import { Row, Col, Button } from 'react-materialize';
 import Footer from '../../../components/Footer/Footer'
 import API from '../../../utils/API';
 import 'materialize-css';
 import './job-view.css';
 
 export default function JobView(props) {
-    useEffect(()=>{
+    useEffect(() => {
         getJobData(props.match.params.job);
-    },[])
+    }, [])
 
     const [jobState, updateJob] = useState({
-        job:{}
+        job: {}
     });
-    
-    function getJobData(id){
+
+    function getJobData(id) {
         API.getOneJob(id)
             .then(res => {
                 updateJob({
@@ -24,17 +24,21 @@ export default function JobView(props) {
             .catch(err => console.log(err))
     }
 
+    const applyToJob = (id) => {
+        props.history.push('/apply/' + id)
+    }
+
     let duties;
     let dutyList = jobState.job.duties;
-    if(dutyList){
+    if (dutyList) {
         duties = (
             <ul className='duty-list'>
                 {dutyList.map((duty, i) => {
-                    return( <li key={i}>{duty}</li>)
+                    return (<li key={i}>{duty}</li>)
                 })}
             </ul>
         )
-        
+
     }
 
     let quals;
@@ -50,7 +54,7 @@ export default function JobView(props) {
 
     }
 
-    return(
+    return (
         <div>
             <div className='job-search-apply'>
                 <div className='container jsa-content'>
@@ -75,10 +79,16 @@ export default function JobView(props) {
                         <div className='list-wrapper'>
                             {quals}
                         </div>
+                        <Row className='apply'>
+                            <Col s={12}>
+                                <Button className='title-btn'
+                                    onClick={() => applyToJob(props.match.params.job)}>APPLY</Button>
+                            </Col>
+                        </Row>
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

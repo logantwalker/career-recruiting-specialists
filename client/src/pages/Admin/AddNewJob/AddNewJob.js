@@ -105,19 +105,19 @@ export default function AddNewJob() {
     }
 
     const addDuty = () =>{
-        let plusOne = newJob.duties;
-        plusOne.push('');
+        let plusOneDuty = newJob.duties;
+        plusOneDuty.push('');
         updateFields({
             ...newJob,
-            duties:plusOne
+            duties:plusOneDuty
         })
     }
     const addQualification = () =>{
-        let plusOne = newJob.quals;
-        plusOne.push('');
+        let plusOneQual = newJob.quals;
+        plusOneQual.push('');
         updateFields({
             ...newJob,
-            quals: plusOne
+            quals: plusOneQual
         })
     }
 

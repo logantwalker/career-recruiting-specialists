@@ -1,0 +1,24 @@
+.app-fields{
+    padding-top: 1% !important;
+}
+
+.apply{
+    padding-top: 4% !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 3%;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+}
+
+.empty-col{
+    padding:0 !important;
+}
+
+.section-head{
+    font-weight: 500;
+    padding-top: 1%;
+}
+
+.section-subhead{
+    font-weight: 500;
+}
