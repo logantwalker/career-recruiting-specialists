@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import { Row, Col, TextInput, Textarea, Select, Button, Icon } from 'react-materialize';
 import Footer from '../../../components/Footer/Footer'
 import API from '../../../utils/API';
+import emailjs from 'emailjs-com';
 import 'materialize-css';
 import './job-apply.css';
 
@@ -11,30 +12,122 @@ export default function JobApply(props) {
     }, [])
 
     const [userApp, updateUser] = useState({
-        first_name:'',
-        last_name:'',
-        email:'',
-        phone:'',
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
         job_applied: props.match.params.job,
-        education:{
+        education: {
             attained: '',
-            studyField: null
+            studyField: null,
+            cert_title: '',
+            cert_desc: ''
         },
-        experience:{
-            previousJobs:['','',''],
-            skills:[]
-        },
-        relocate: '',
-        travel: ''
+        experience: {
+            previousJobs: ['', '', ''],
+            skills: []
+        }
     });
 
     const [appState, updateApp] = useState({
-        job:{},
+        job: {},
         degree: false,
         certs: false,
         certNum: 0,
         numSkill: 0
     })
+
+    const captureField = (e) => {
+        switch (e.target.id) {
+            case 'first_name':
+                updateUser({
+                    ...userApp,
+                    first_name: e.target.value
+                })
+                break;
+            case 'last_name':
+                updateUser({
+                    ...userApp,
+                    last_name: e.target.value
+                })
+                break;
+            case 'user_email':
+                updateUser({
+                    ...userApp,
+                    email: e.target.value
+                })
+                break;
+            case 'phone':
+                updateUser({
+                    ...userApp,
+                    phone: e.target.value
+                })
+                break;
+            case 'location':
+                updateUser({
+                    ...userApp,
+                    location: e.target.value
+                })
+                break;
+            case 'edu-level':
+                let newEdu = userApp.education;
+                newEdu.attained = e.target.value
+                updateUser({
+                    ...userApp,
+                    education: newEdu
+                })
+                break;
+            case 'study-field':
+                let newFOS = userApp.education;
+                newFOS.studyField = e.target.value;
+                updateUser({
+                    ...userApp,
+                    education: newFOS
+                })
+                break;
+            case 'cert-title':
+                let newCertTitle = userApp.education;
+                newCertTitle.cert_title = e.target.value;
+                updateUser({
+                    ...userApp,
+                    education: newCertTitle
+                })
+                break;
+            case 'cert-desc':
+                let newCertDesc = userApp.education;
+                newCertDesc.cert_desc = e.target.value;
+                updateUser({
+                    ...userApp,
+                    education: newCertDesc
+                })
+                break;
+            case 'job1':
+                let newJobOne = userApp.experience;
+                newJobOne.previousJobs[0] = e.target.value;
+                updateUser({
+                    ...userApp,
+                    experience: newJobOne
+                })
+                break;
+            case 'job2':
+                let newJob2 = userApp.experience;
+                newJob2.previousJobs[1] = e.target.value;
+                updateUser({
+                    ...userApp,
+                    experience: newJob2
+                })
+                break;
+            case 'job3':
+                let newJob3 = userApp.experience;
+                newJob3.previousJobs[2] = e.target.value;
+                updateUser({
+                    ...userApp,
+                    experience: newJob3
+                })
+                break;
+
+        }
+    }
 
     function getJobData(id) {
         API.getOneJob(id)
@@ -47,8 +140,24 @@ export default function JobApply(props) {
             .catch(err => console.log(err))
     }
 
-    const addCert = (e) =>{
-        if(e.target.value === 'cert-yes'){
+    const submitApp = (e) => {
+        e.preventDefault();
+        console.log(e.target)
+    }
+
+    function sendEmail(e) {
+        e.preventDefault();
+        console.log(e.target)
+        emailjs.sendForm('service_yktqjfg', 'request_resume', e.target, 'user_yX3jDLQByusWm1iD6b6JP')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    }
+
+    const addCert = (e) => {
+        if (e.target.value === 'cert-yes') {
             updateApp({
                 ...appState,
                 certs: true
@@ -56,15 +165,15 @@ export default function JobApply(props) {
         }
     }
 
-    const fieldOfStudy = (e) =>{
-        if(e.target.value === 'some-college' ||
+    const fieldOfStudy = (e) => {
+        if (e.target.value === 'some-college' ||
             e.target.value === 'associates' ||
             e.target.value === 'bachelors' ||
-            e.target.value === 'masters-plus'){
-                updateApp({
-                    ...appState,
-                    degree: true
-                })
+            e.target.value === 'masters-plus') {
+            updateApp({
+                ...appState,
+                degree: true
+            })
         }
         else {
             updateApp({
@@ -74,7 +183,7 @@ export default function JobApply(props) {
         }
     }
 
-    const addSkill = () =>{
+    const addSkill = () => {
         let curCount = appState.numSkill;
         curCount++;
         updateApp({
@@ -85,38 +194,28 @@ export default function JobApply(props) {
 
 
     let studyFields;
-    if(appState.degree){
+    if (appState.degree) {
         studyFields = (
-                <TextInput s={6}
-                    id='study-field'
-                    label='Field Of Study'/>)
+            <TextInput s={6}
+                id='study-field'
+                label='Field Of Study'
+                onChange={(e) => captureField(e)} />)
     }
 
     let certFields;
-    if(appState.certs){
-        certFields=(
+    if (appState.certs) {
+        certFields = (
             <div>
                 <TextInput s={6}
                     id='cert-title'
-                    label='Title'/>
+                    label='Title'
+                    onChange={(e) => captureField(e)} />
                 <Textarea s={8}
                     id='cert-desc'
-                    label='description'/>
+                    label='description'
+                    onChange={(e) => captureField(e)} />
             </div>
         )
-    }
-
-    let skillsField=[];
-    if(appState.numSkill){
-        for(let i=0; i<appState.numSkill; i++){
-            skillsField.push(
-                <Col s={12} className='empty-col'>
-                    <TextInput s={6}
-                        id={`skill${i}`}
-                        label='Skill'/>
-                </Col>
-            )
-        }
     }
 
     return (
@@ -126,175 +225,167 @@ export default function JobApply(props) {
                     <Row className='apply'>
                         <h5>{appState.job.title}</h5>
                         <div className='divider'></div>
+
                         <Col s={12} className='app-fields'>
-
-                            <Col s={12} className='empty-col'>
-                                <h6 className='section-head'>Personal Information:</h6>
-                            </Col>
-                            <TextInput s={6}
-                                id='first_name'
-                                label='First Name' />
-                            <TextInput s={6}
-                                id='last_name'
-                                label='Last Name' />
-                            <Col className='empty-col' s={12}>
+                            <h6 className='section-head'>Personal Information:</h6>
+                            <form onSubmit={sendEmail}>
                                 <TextInput s={6}
-                                    id='email'
+                                    id='first_name'
+                                    label='First Name'
+                                    onChange={(e) => captureField(e)} />
+                                <TextInput s={6}
+                                    id='last_name'
+                                    label='Last Name'
+                                    onChange={(e) => captureField(e)} />
+                                <TextInput s={6}
+                                    id='user_email'
                                     label='Email'
-                                    type='email' />
-                            </Col>
-                            <Col className='empty-col' s={12}>
-                                <TextInput s={6}
-                                    id='phone'
-                                    label='Phone Number'
-                                    type='tel' />
-                            </Col>
-                            <Col className='empty-col' s={12}>
-                                <TextInput s={6}
-                                    id='location'
-                                    label='Location'
-                                    placeholder='City, State (e.g. Atlanta, GA)' />
-                            </Col>
+                                    type='email'
+                                    onChange={(e) => captureField(e)} />
 
-
-                            <Col className='empty-col' s={12}>
-                                <h6 className='section-head'>Education & Certifications:</h6>
-                            </Col>
-                            <Col className='empty-col' s={12}>
-                                <Select
-                                    id="edu-level"
-                                    onChange={(e)=>fieldOfStudy(e)}
-                                    multiple={false}
-                                    s={6}
-                                    options={{
-                                        classes: '',
-                                        dropdownOptions: {
-                                            alignment: 'left',
-                                            autoTrigger: true,
-                                            closeOnClick: true,
-                                            constrainWidth: true,
-                                            coverTrigger: true,
-                                            hover: false,
-                                            inDuration: 150,
-                                            onCloseEnd: null,
-                                            onCloseStart: null,
-                                            onOpenEnd: null,
-                                            onOpenStart: null,
-                                            outDuration: 250
-                                        }
-                                    }}
-                                    value="">
-                                    <option
-                                        disabled
-                                        value="">
-                                        Select Eductaion Level
-                                    </option>
-                                    <option value="some-HS">
-                                        Some High School
-                                    </option>
-                                    <option value="HS-GED">
-                                        High School or GED
-                                    </option>
-                                    <option value="some-college">
-                                        Some College
-                                    </option>
-                                    <option value="associates">
-                                        Associates Degree
-                                    </option>
-                                    <option value="bachelors">
-                                        Bachelor's Degree
-                                    </option>
-                                    <option value="masters-plus">
-                                        Master's Degree or Higher
-                                    </option>
-                                </Select>
-                            </Col>
-                            <Col className='empty-col' s={12}>
-                                {studyFields}
-                            </Col>
-                            <Col s={12} className='empty-col'>
-                                <p className='section-subhead'>
-                                    Do you have any relevant certifications?
-                                </p>
-                                <Select
-                                    label=''
-                                    onChange={(e)=>addCert(e)}
-                                    id="certifications"
-                                    multiple={false}
-                                    s={6}
-                                    options={{
-                                        classes: '',
-                                        dropdownOptions: {
-                                            alignment: 'left',
-                                            autoTrigger: true,
-                                            closeOnClick: true,
-                                            constrainWidth: true,
-                                            coverTrigger: true,
-                                            hover: false,
-                                            inDuration: 150,
-                                            onCloseEnd: null,
-                                            onCloseStart: null,
-                                            onOpenEnd: null,
-                                            onOpenStart: null,
-                                            outDuration: 250
-                                        }
-                                    }}
-                                    value="">
-                                    <option
-                                        disabled
-                                        value="">
-                                        Select
-                                    </option>
-                                    <option value="cert-yes">
-                                        Yes
-                                    </option>
-                                </Select>
-                            </Col>
-                            <Col s={12} className='empty-col'>
-                                {certFields}
-                            </Col>
-
-
-                            <Col className='empty-col' s={12}>
-                                <h6 className='section-head'>Work Experience:</h6>
-                            </Col>
-                            <Col className='empty-col' s={12}>
-                                <p className='section-subhead'>
-                                    Previous Three Job Titles
-                                </p>
-                                <TextInput s={4}
-                                    id='job1'
-                                    label='Job Title'/>
-                                <TextInput s={4} 
-                                    id='job2'
-                                    label='Job Title'/>
-                                <TextInput s={4} 
-                                    id='job3'
-                                    label='Job Title'/>
-                            </Col>
-                            <Col className='empty-col' s={12}>
-                                <p className='section-subhead '>
-                                    Would you like to add any relevant skills?
-                                    <span className='skills-btn'>
-                                        <Button
-                                            small={true}
-                                            className='title-btn'
-                                            floating
-                                            icon={<Icon>add</Icon>}
-                                            onClick={()=> addSkill()}>
-                                        </Button>
-                                    </span>
-                                </p>
-                            </Col>
-                            <div className='skills-fields'>
-                                {skillsField}
-                            </div>
-                            <Row className='apply right'>
-                                <Col s={12}>
-                                    <Button className='title-btn'
-                                        onClick={()=>console.log('applied!')}>APPLY</Button>
+                                <Col className='empty-col' s={12}>
+                                    <TextInput s={6}
+                                        id='phone'
+                                        label='Phone Number'
+                                        type='tel'
+                                        onChange={(e) => captureField(e)} />
                                 </Col>
-                            </Row>
+                                <Col className='empty-col' s={12}>
+                                    <TextInput s={6}
+                                        id='location'
+                                        label='Location'
+                                        onChange={(e) => captureField(e)}
+                                        placeholder='City, State (e.g. Atlanta, GA)' />
+                                </Col>
+
+
+                                <Col className='empty-col' s={12}>
+                                    <h6 className='section-head'>Education & Certifications:</h6>
+                                </Col>
+                                <Col className='empty-col' s={12}>
+                                    <Select
+                                        id="edu-level"
+                                        onChange={(e) => {
+                                            fieldOfStudy(e)
+                                            captureField(e)
+                                        }}
+                                        multiple={false}
+                                        s={6}
+                                        options={{
+                                            classes: '',
+                                            dropdownOptions: {
+                                                alignment: 'left',
+                                                autoTrigger: true,
+                                                closeOnClick: true,
+                                                constrainWidth: true,
+                                                coverTrigger: true,
+                                                hover: false,
+                                                inDuration: 150,
+                                                onCloseEnd: null,
+                                                onCloseStart: null,
+                                                onOpenEnd: null,
+                                                onOpenStart: null,
+                                                outDuration: 250
+                                            }
+                                        }}
+                                        value="">
+                                        <option
+                                            disabled
+                                            value="">
+                                            Select Eductaion Level
+                                    </option>
+                                        <option value="some-HS">
+                                            Some High School
+                                    </option>
+                                        <option value="HS-GED">
+                                            High School or GED
+                                    </option>
+                                        <option value="some-college">
+                                            Some College
+                                    </option>
+                                        <option value="associates">
+                                            Associates Degree
+                                    </option>
+                                        <option value="bachelors">
+                                            Bachelor's Degree
+                                    </option>
+                                        <option value="masters-plus">
+                                            Master's Degree or Higher
+                                    </option>
+                                    </Select>
+                                </Col>
+                                <Col className='empty-col' s={12}>
+                                    {studyFields}
+                                </Col>
+                                <Col s={12} className='empty-col'>
+                                    <p className='section-subhead'>
+                                        Do you have any relevant certifications?
+                                    </p>
+                                    <Select
+                                        label=''
+                                        onChange={(e) => addCert(e)}
+                                        id="certifications"
+                                        multiple={false}
+                                        s={6}
+                                        options={{
+                                            classes: '',
+                                            dropdownOptions: {
+                                                alignment: 'left',
+                                                autoTrigger: true,
+                                                closeOnClick: true,
+                                                constrainWidth: true,
+                                                coverTrigger: true,
+                                                hover: false,
+                                                inDuration: 150,
+                                                onCloseEnd: null,
+                                                onCloseStart: null,
+                                                onOpenEnd: null,
+                                                onOpenStart: null,
+                                                outDuration: 250
+                                            }
+                                        }}
+                                        value="">
+                                        <option
+                                            disabled
+                                            value="">
+                                            Select
+                                    </option>
+                                        <option value="cert-yes">
+                                            Yes
+                                    </option>
+                                    </Select>
+                                </Col>
+                                <Col s={12} className='empty-col'>
+                                    {certFields}
+                                </Col>
+
+
+                                <Col className='empty-col' s={12}>
+                                    <h6 className='section-head'>Work Experience:</h6>
+                                </Col>
+                                <Col className='empty-col' s={12}>
+                                    <p className='section-subhead'>
+                                        Previous Three Job Titles
+                                </p>
+                                    <TextInput s={4}
+                                        id='job1'
+                                        label='Job Title'
+                                        onChange={(e) => captureField(e)} />
+                                    <TextInput s={4}
+                                        id='job2'
+                                        label='Job Title'
+                                        onChange={(e) => captureField(e)} />
+                                    <TextInput s={4}
+                                        id='job3'
+                                        label='Job Title'
+                                        onChange={(e) => captureField(e)} />
+                                </Col>
+                                <Row className='apply right'>
+                                    <Col s={12}>
+                                        <input className='submit-button btn' type="submit" value="Submit" />
+                                    </Col>
+                                </Row>
+                            </form>
                         </Col>
                     </Row>
                 </div>

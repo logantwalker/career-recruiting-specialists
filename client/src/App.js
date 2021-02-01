@@ -11,6 +11,7 @@ import JobOverview from './pages/JobOverview/JobOverview';
 import SearchApply from './pages/JobSearchApply/SearchApply';
 import JobView from './pages/JobSearchApply/JobView/JobView'
 import JobApply from './pages/JobSearchApply/JobApply/JobApply';
+import ApplySuccess from './pages/JobSearchApply/ApplySuccess/ApplySuccess';
 import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/ContactUs/Contact';
 import NotFound from './pages/NotFound/NotFound';
@@ -34,6 +35,7 @@ function App() {
         <Route exact path='/job-search' component={SearchApply} />
         <Route exact path='/job-search/:job' component={JobView} />
         <Route exact path='/apply/:job' component={JobApply}/>
+        <Route exact path='/app-success' component={ApplySuccess} />
         <Route exact path='/about' component={AboutUs} />
         <Route exact path='/contact' component={Contact} />
         <Route exact path='/admin' component={AdminHome} />

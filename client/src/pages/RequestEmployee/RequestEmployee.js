@@ -102,7 +102,7 @@ export default function RequestEmployee() {
                                 <input type="email" name="user_email" id='user_email' />
                             </div>
 
-                            <input className='submit-button btn' type="submit" value="Submit" />
+                            
                         </form>
                     </Col>
                 </Row>
