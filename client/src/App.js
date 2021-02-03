@@ -16,9 +16,14 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Contact from './pages/ContactUs/Contact';
 import NotFound from './pages/NotFound/NotFound';
 
+import './App.css';
+
 //admin components
 import AdminHome from './pages/Admin/AdminHome/AdminHome';
-import './App.css';
+import AdminJobView from './pages/Admin/AdminJobView/AdminJobView';
+import AddNewJob from './pages/Admin/AddNewJob/AddNewJob';
+
+
 
 
 
@@ -35,10 +40,13 @@ function App() {
         <Route exact path='/job-search' component={SearchApply} />
         <Route exact path='/job-search/:job' component={JobView} />
         <Route exact path='/apply/:job' component={JobApply}/>
-        <Route exact path='/app-success' component={ApplySuccess} />
+        <Route exact path='/apply-success' component={ApplySuccess} />
         <Route exact path='/about' component={AboutUs} />
         <Route exact path='/contact' component={Contact} />
-        <Route exact path='/admin' component={AdminHome} />
+
+        <Route exact path='/admin/jobs' component={AdminHome} />
+        <Route exact path='/admin/jobs/:job' component={AdminJobView} />
+        <Route exact path='/admin/add-job' component={AddNewJob} />
         <Route component={NotFound} />
       </Switch>
     </Router>

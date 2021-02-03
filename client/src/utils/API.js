@@ -43,6 +43,10 @@ const API = {
 
     getApplicants: function () {
         return axios.get("/api/applicants");
+    },
+
+    postApplication: function (q) {
+        return axios.post("/api/applicants", q)
     }
 };
 

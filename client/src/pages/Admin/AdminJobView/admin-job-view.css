@@ -5,3 +5,7 @@
 .delete-btn:hover{
     background-color: red !important;
 }
+
+.btn-row{
+    margin-top: 10px;
+}

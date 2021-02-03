@@ -23,18 +23,14 @@ export default function JobApply(props) {
             cert_title: '',
             cert_desc: ''
         },
-        experience: {
-            previousJobs: ['', '', ''],
-            skills: []
-        }
+        experience: ['','','']
     });
 
     const [appState, updateApp] = useState({
         job: {},
         degree: false,
         certs: false,
-        certNum: 0,
-        numSkill: 0
+        certNum: 0
     })
 
     const captureField = (e) => {
@@ -103,7 +99,7 @@ export default function JobApply(props) {
                 break;
             case 'job1':
                 let newJobOne = userApp.experience;
-                newJobOne.previousJobs[0] = e.target.value;
+                newJobOne[0] = e.target.value;
                 updateUser({
                     ...userApp,
                     experience: newJobOne
@@ -111,7 +107,7 @@ export default function JobApply(props) {
                 break;
             case 'job2':
                 let newJob2 = userApp.experience;
-                newJob2.previousJobs[1] = e.target.value;
+                newJob2[1] = e.target.value;
                 updateUser({
                     ...userApp,
                     experience: newJob2
@@ -119,7 +115,7 @@ export default function JobApply(props) {
                 break;
             case 'job3':
                 let newJob3 = userApp.experience;
-                newJob3.previousJobs[2] = e.target.value;
+                newJob3[2] = e.target.value;
                 updateUser({
                     ...userApp,
                     experience: newJob3
@@ -140,9 +136,12 @@ export default function JobApply(props) {
             .catch(err => console.log(err))
     }
 
-    const submitApp = (e) => {
-        e.preventDefault();
-        console.log(e.target)
+    const submitApp = () => {
+        API.postApplication(userApp)
+            .then(res => {
+                props.history.push('/apply-success')
+            })
+            .catch(err => console.log(err));
     }
 
     function sendEmail(e) {
@@ -150,7 +149,7 @@ export default function JobApply(props) {
         console.log(e.target)
         emailjs.sendForm('service_yktqjfg', 'request_resume', e.target, 'user_yX3jDLQByusWm1iD6b6JP')
             .then((result) => {
-                console.log(result.text);
+                submitApp();
             }, (error) => {
                 console.log(error.text);
             });
@@ -182,16 +181,6 @@ export default function JobApply(props) {
             })
         }
     }
-
-    const addSkill = () => {
-        let curCount = appState.numSkill;
-        curCount++;
-        updateApp({
-            ...appState,
-            numSkill: curCount
-        })
-    }
-
 
     let studyFields;
     if (appState.degree) {
@@ -229,19 +218,23 @@ export default function JobApply(props) {
                         <Col s={12} className='app-fields'>
                             <h6 className='section-head'>Personal Information:</h6>
                             <form onSubmit={sendEmail}>
-                                <TextInput s={6}
-                                    id='first_name'
-                                    label='First Name'
-                                    onChange={(e) => captureField(e)} />
-                                <TextInput s={6}
-                                    id='last_name'
-                                    label='Last Name'
-                                    onChange={(e) => captureField(e)} />
-                                <TextInput s={6}
-                                    id='user_email'
-                                    label='Email'
-                                    type='email'
-                                    onChange={(e) => captureField(e)} />
+                                <div className='input-field col s6'>
+                                    <label htmlFor='first_name'>First Name</label>
+                                    <input type="text" name="first_name" id="first_name"
+                                        onChange={(e) => captureField(e)} />
+                                </div>
+
+                                <div className='input-field col s6'>
+                                    <label htmlFor='last_name'>Last Name</label>
+                                    <input type="text" name="last_name" id="last_name"
+                                        onChange={(e) => captureField(e)} />
+                                </div>
+
+                                <div className='input-field col s6'>
+                                    <label htmlFor='user_email'>Email</label>
+                                    <input type="text" name="user_email" id="user_email"
+                                        onChange={(e) => captureField(e)} />
+                                </div>
 
                                 <Col className='empty-col' s={12}>
                                     <TextInput s={6}

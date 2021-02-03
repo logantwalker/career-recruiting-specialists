@@ -1,18 +1,22 @@
 .admin{
     margin-top: 76px;
+    background-color: #153A81;
 }
 
 .directory-container{
     margin-bottom: 0 !important;
+    
 }
 
 .side-nav{
-    padding:0 !important;
-    height: 89.25vh;
+    margin-top:1% !important;
+    
+    padding:2% !important;
+    border-radius: 15px;
     background-color: rgb(16%, 56%, 89%);
-    -moz-box-shadow: 3px 0 3px 0 #555;
-    -webkit-box-shadow: 3px 0 3px 0 #555;
-    box-shadow: 3px 0 3px 0 #555;
+    -moz-box-shadow: 3px 0 3px 0 #000000;
+    -webkit-box-shadow: 3px 0 3px 0 #000000;
+    box-shadow: 3px 0 3px 0 #000000;
 }
 
 .side-nav a{
@@ -28,8 +32,27 @@
     color:white;
     font-weight: 700;
 }
-.directory-window{
-    height: 89.25vh;
-    padding:0 !important;
-    overflow-y: scroll;
+
+.sidenav-item:hover{
+    border-bottom: 2px solid yellow;
+    color:yellow !important;
 }
+
+
+.directory-window{
+    padding:0 !important;
+}
+
+.job-table{
+    height: 86.25vh;
+    background-color: white;
+    overflow-y: scroll;
+    padding: 1%;
+    border: 1px solid #E0E0E0;
+    border-radius: 15px;
+    margin-top:1%;
+    margin-left: 2%;
+    margin-right:2%;
+    margin-bottom: 1%;
+}
+

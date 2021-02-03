@@ -23,6 +23,14 @@ const applicantSchema = new Schema({
         type: String,
         required: true
     },
+    education: {
+        type: Object,
+        required: true
+    },
+    experience: {
+        type:Array,
+        required: true
+    },
     location: {
         type: String,
         required: true

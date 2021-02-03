@@ -1,54 +1,69 @@
 import { React, useState, useEffect } from 'react';
-import { Row, Col, TextInput, Textarea, Select, Button} from 'react-materialize';
+import { Row, Col, TextInput, Textarea, Select, Button } from 'react-materialize';
 import DeleteJobModal from '../../../components/Modals/DeleteJobModal';
 import API from '../../../utils/API'
 import './admin-job-view.css'
 import 'materialize-css';
 
 export default function AdminJobView(props) {
+    useEffect(() => {
+        getJobData(props.match.params.job);
+    }, [])
+
     const [Job, updateFields] = useState({
-        jobTitle: props.job.title,
-        company: props.job.company,
-        industry: props.job.industry,
-        jobType: props.job.type,
-        shift: props.job.shift,
-        description: props.job.description,
-        location: props.job.location,
+        job_id: '',
+        jobTitle: '',
+        company: '',
+        industry: '',
+        jobType: '',
+        shift: '',
+        description: '',
+        location: '',
         salaryLow: '',
         salaryHigh: ''
     })
+    function getJobData(id) {
+        API.getOneJob(id)
+            .then(res => {
+                let job = res.data
+                let sArr = job.salary.split('-')
+                updateFields({
+                    job_id: job._id,
+                    jobTitle: job.title,
+                    company: job.company,
+                    industry: job.industry,
+                    jobType: job.type,
+                    shift: job.shift,
+                    description: job.description,
+                    location: job.location,
+                    salaryLow: sArr[0],
+                    salaryHigh: sArr[1]
+                })
+            })
+            .catch(err => console.log(err))
+    }
 
     const [editMode, changeMode] = useState({
         edit: false,
-        mode: 'Edit'
+        mode: 'Edit',
+        changeMade: false
     })
 
     const [modalStates, displayModals] = useState({
         delete: false
     })
 
-    useEffect(() => {
-        determineSalary();
-    }, [])
-
-    const determineSalary = () => {
-        let sArr = props.job.salary.split('-')
-        updateFields({
-            ...Job,
-            salaryLow: sArr[0],
-            salaryHigh: sArr[1]
-        });
-    }
-
     const changeModes = () => {
         if (!editMode.edit) {
             changeMode({
+                ...editMode,
                 edit: true,
                 mode: 'Save'
             })
         }
         else {
             changeMode({
+                ...editMode,
                 edit: false,
                 mode: 'Edit'
             })
@@ -69,31 +84,9 @@ export default function AdminJobView(props) {
         })
     }
 
-    const checkedChange = () => {
-        let change
-        let sArr = props.job.salary.split('-')
-        if (
-            Job.jobTitle === props.job.title &&
-            Job.company === props.job.company &&
-            Job.industry === props.job.industry &&
-            Job.jobType === props.job.type &&
-            Job.shift === props.job.shift &&
-            Job.description === props.job.description &&
-            Job.location === props.job.location &&
-            Job.salaryLow === sArr[0] &&
-            Job.salaryHigh === sArr[1]
-        ) {
-            change = false
-        }
-        else {
-            change = true
-        }
-        return change
-    }
     const handleUpdate = () => {
-        let changed = checkedChange();
-        if (changed) {
-            API.updateJob(Job, props.job._id).then().catch(err => console.log(err));
+        if (editMode.changeMade) {
+            API.updateJob(Job, Job.job_id).then().catch(err => console.log(err));
         }
         else {
             alert('You have not made any changes to this job!')
@@ -101,10 +94,14 @@ export default function AdminJobView(props) {
     }
 
     const handleDelete = () => {
-        API.deleteJob(props.job._id).then().catch(err => console.log(err))
+        API.deleteJob(Job.job_id).then().catch(err => console.log(err))
     }
 
     const captureField = (e) => {
+        changeMode({
+            ...editMode,
+            changeMade: true
+        })
         switch (e.target.id) {
             case 'jobTitle':
                 updateFields({
@@ -173,29 +170,33 @@ export default function AdminJobView(props) {
                         <Row>
                             <h4>
                                 {Job.jobTitle}
-                                <span className='right'>
-                                    <Button
-                                        className='title-btn delete-btn'
-                                        node="button"
-                                        waves='light'
-                                        onClick={showDeleteModal}
-                                    >
-                                        Delete
-                                    </Button>
-                                </span>
-                                <span className='right edit-btn'>
-                                    <Button
-                                        className='title-btn'
-                                        node="button"
-                                        waves='light'
-                                        onClick={changeModes}
-                                    >
-                                        {editMode.mode}
-                                    </Button>
-                                </span>
-
                             </h4>
                             <div className='divider'></div>
+                            <div className='btn-row'>
+                                <Button
+                                    className='title-btn'
+                                    node="button"
+                                    waves='light'
+                                >
+                                    View Candidates
+                                </Button>
+                                <Button
+                                    className='title-btn'
+                                    node="button"
+                                    waves='light'
+                                    onClick={changeModes}
+                                >
+                                    {editMode.mode}
+                                </Button>
+                                <Button
+                                    className='title-btn delete-btn'
+                                    node="button"
+                                    waves='light'
+                                    onClick={showDeleteModal}
+                                >
+                                    Delete
+                                </Button>
+                            </div>
                         </Row>
 
                         <TextInput s={8}
@@ -341,22 +342,22 @@ export default function AdminJobView(props) {
                             label="High"
                         />
                         <Col s={12}>
-                            <a href='/admin'>
-                                <Button className='title-btn right'
-                                    node="button"
-                                    waves='light'
-                                    onClick={handleUpdate}>
-                                    Submit Changes
-                                </Button>
-                            </a>
+
+                            <Button className='title-btn right'
+                                node="button"
+                                waves='light'
+                                onClick={handleUpdate}>
+                                Submit Changes
+                            </Button>
+
                         </Col>
                     </Col>
                 </Row>
             </div>
             <DeleteJobModal
                 show={modalStates.delete}
-                hide={hideDeleteModal} 
-                delete={handleDelete}/>
+                hide={hideDeleteModal}
+                delete={handleDelete} />
 
         </div>
     )

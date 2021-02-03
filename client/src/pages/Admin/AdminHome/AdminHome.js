@@ -9,16 +9,12 @@ import 'materialize-css';
 import './admin.css';
 
 
-export default function AdminHome() {
-    const [directoryState, changeDir] = useState({
-        render: (
-        <div>
-            <Col>
-                <h4>Use the Sidebar to get started!</h4>
-            </Col>
-        </div>
-        )
-    });
+export default function AdminHome(props) {
+
+    useEffect(() => {
+        fetchJobs();
+        fetchApplicants();
+    }, []);
 
     const [jobState, updateJobs] = useState({
         jobs: []
@@ -28,12 +24,9 @@ export default function AdminHome() {
         applicants: []
     })
 
-    useEffect(() => {
-        fetchJobs();
-        fetchApplicants();
-    }, []);
+    
 
-    const fetchJobs = () => {
+    function fetchJobs() {
         API.getJobs()
             .then(res => {
                 updateJobs({
@@ -43,7 +36,7 @@ export default function AdminHome() {
         
     }
 
-    const fetchApplicants = () => {
+    function fetchApplicants() {
         API.getApplicants()
             .then(res =>{
                 updateApps({
@@ -52,55 +45,45 @@ export default function AdminHome() {
             })
     }
 
-    const RenderJobs = () => {
-        changeDir({
-            render: (<JobTable jobs={jobState.jobs} click={(e) => RenderJobView(e)} />)
-        })
-    }
+    // const RenderJobs = () => {
+    //     changeDir({
+    //         render: (<JobTable jobs={jobState.jobs} click={(e) => RenderJobView(e)} />)
+    //     })
+    // }
 
     const RenderAddNewJob = () => {
-        changeDir({
-            render: (<AddNewJob />)
-        })
+        props.history.push('/admin/add-job')
     }
 
-    const RenderApplicants = () => {
-        changeDir({
-            render: (<ApplicantTable apps={appState.applicants} />)
-        })
-    }
+    // const RenderApplicants = () => {
+    //     changeDir({
+    //         render: (<ApplicantTable apps={appState.applicants} />)
+    //     })
+    // }
 
     const RenderJobView = (e) => {
-        changeDir({
-            render: (<AdminJobView job={jobState.jobs[e.target.id]} navi={()=>deleteNavi}/>)
-        })
+        props.history.push('/admin/jobs/' + e.target.id)
     }
 
-    const deleteNavi = () =>{
-        changeDir({
-            render: (<JobTable jobs={jobState.jobs} click={(e) => RenderJobView(e)} />)
-        })
-    }
+    // const deleteNavi = () =>{
+    //     changeDir({
+    //         render: (<JobTable jobs={jobState.jobs} click={(e) => RenderJobView(e)} />)
+    //     })
+    // }
 
     return (
         <div className='admin'>
             <Row className='directory-container'>
-                <Col s={2} className='side-nav'>
-                    <div className='sidenav-item hoverable'
-                        onClick={RenderJobs} >
-                        View Listed Jobs
+                <Col s={10} className='directory-window'>
+                    <JobTable jobs={jobState.jobs} click={(e)=>{RenderJobView(e)}}/>
+                </Col>
+                <Col className='side-nav'>
+                    <div className='sidenav-item'>
+                        View All Candidates
                     </div>
-                    <div className='sidenav-item hoverable'
-                        onClick={RenderApplicants}>
-                        View Applicants
-                    </div>
-                    <div className='sidenav-item hoverable'
-                        onClick={RenderAddNewJob}>
+                    <div onClick={RenderAddNewJob} className='sidenav-item'>
                         Add New Job Listing
                     </div>
-                </Col>
-                <Col s={10} className='directory-window'>
-                    {directoryState.render}
                 </Col>
             </Row>
         </div>

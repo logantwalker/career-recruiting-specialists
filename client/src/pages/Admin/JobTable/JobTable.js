@@ -7,7 +7,7 @@ export default function JobTable(props) {
     
     return(
         <div className='job-table'>
-            <Table centered={true} hoverable={true} >
+            <Table  hoverable={true} >
                 <thead>
                     <tr>
                         <th data-field="job-title">
@@ -28,8 +28,8 @@ export default function JobTable(props) {
                     {props.jobs.map((job, i) => {
                         return (
                             <JobListItem className='hoverable'
-                                key={job._id}
-                                id={i}
+                                key={i}
+                                id={job._id}
                                 title={job.title}
                                 industry={job.industry}
                                 company={job.company}

@@ -30,8 +30,8 @@ export default function JobTable(props) {
                                 key={app._id}
                                 id={i}
                                 name={`${app.last_name}, ${app.first_name}`}
-                                exp={'add experience to the model...'}
-                                applied={'app.jobs_applied'}
+                                exp={app.experience[0]}
+                                applied={app.job_applied}
                                 location={app.location}
                                 click={props.click} />
                         )

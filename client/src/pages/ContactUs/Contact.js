@@ -26,10 +26,10 @@ export default function ContactUs() {
             <div className='employer-header'>
                 <div className='header-title'>
                     Middle GA'S Staffing Specialists
-                    </div>
+                </div>
                 <div className='header-subtitle'>
                     Have a question? We are here to help!
-                    </div>
+                </div>
             </div>
             
             <div className='container'>
