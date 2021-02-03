@@ -22,11 +22,9 @@ import './App.css';
 import AdminHome from './pages/Admin/AdminHome/AdminHome';
 import AdminJobView from './pages/Admin/AdminJobView/AdminJobView';
 import AddNewJob from './pages/Admin/AddNewJob/AddNewJob';
-
-
-
-
-
+import AdminAppView from './pages/Admin/AdminAppView/AdminAppView';
+import EditJob from './pages/Admin/EditJob/EditJob';
+import CandidateView from './pages/Admin/CandidateView/CandidateView';
 
 function App() {
   return (
@@ -39,14 +37,17 @@ function App() {
         <Route exact path='/job-seekers' component={JobOverview} />
         <Route exact path='/job-search' component={SearchApply} />
         <Route exact path='/job-search/:job' component={JobView} />
-        <Route exact path='/apply/:job' component={JobApply}/>
+        <Route exact path='/apply/:job' component={JobApply} />
         <Route exact path='/apply-success' component={ApplySuccess} />
         <Route exact path='/about' component={AboutUs} />
         <Route exact path='/contact' component={Contact} />
-
         <Route exact path='/admin/jobs' component={AdminHome} />
         <Route exact path='/admin/jobs/:job' component={AdminJobView} />
+        <Route exact path='/admin/edit-job/:job' component={EditJob} />
         <Route exact path='/admin/add-job' component={AddNewJob} />
+        <Route exact path='/admin/candidates' component={AdminAppView} />
+        <Route exact path='/admin/candidates/:candidate' component={CandidateView} />
+
         <Route component={NotFound} />
       </Switch>
     </Router>

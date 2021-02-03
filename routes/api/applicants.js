@@ -6,9 +6,9 @@ router.route("/")
     .post(applicantController.create);
 
 
-// router
-//     .route("/:id")
-//     .get(applicantController.findById)
+router
+    .route("/:id")
+    .get(applicantController.findOne)
 //     .put(applicantController.update)
 //     .delete(applicantController.remove);
 

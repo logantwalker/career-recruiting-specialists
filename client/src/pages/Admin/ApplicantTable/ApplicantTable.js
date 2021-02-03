@@ -3,9 +3,17 @@ import 'materialize-css';
 import ApplicantListItem from './ApplicantListItem';
 import { Table } from 'react-materialize';
 
-export default function JobTable(props) {
+export default function ApplicantTable(props) {
+    let tableClass
+    if(props.small){
+        tableClass='applicant-table-small'
+    }
+    else{
+        tableClass='applicant-table'
+    }
+
     return (
-        <div className='applicant-table'>
+        <div className={tableClass}>
             <Table centered={true} hoverable={true} >
                 <thead>
                     <tr>
@@ -16,7 +24,7 @@ export default function JobTable(props) {
                             Experience
                         </th>
                         <th data-field="jobs-applied">
-                            Jobs Applied
+                            Education
                         </th>
                         <th data-field="location">
                             Location
@@ -27,11 +35,11 @@ export default function JobTable(props) {
                     {props.apps.map((app, i) => {
                         return (
                             <ApplicantListItem className='hoverable'
-                                key={app._id}
-                                id={i}
+                                key={i}
+                                id={app._id}
                                 name={`${app.last_name}, ${app.first_name}`}
                                 exp={app.experience[0]}
-                                applied={app.job_applied}
+                                applied={app.education.attained}
                                 location={app.location}
                                 click={props.click} />
                         )

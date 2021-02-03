@@ -3,7 +3,7 @@ import 'materialize-css';
 
 export default function ApplicantListItem(props) {
     return (
-        <tr id={props.id} onClick={()=>console.log(`clicked id: ${props.id}`)} >
+        <tr id={props.id} onClick={props.click} >
             <td id={props.id}>
                 {props.name}
             </td>

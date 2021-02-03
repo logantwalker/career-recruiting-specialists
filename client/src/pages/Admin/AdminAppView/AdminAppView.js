@@ -4,10 +4,9 @@ import ApplicantTable from '../ApplicantTable/ApplicantTable';
 import JobTable from '../JobTable/JobTable';
 import API from '../../../utils/API';
 import 'materialize-css';
-import './admin.css';
 
 
-export default function AdminHome(props) {
+export default function AdminAppView(props) {
 
     useEffect(() => {
         fetchJobs();
@@ -22,9 +21,7 @@ export default function AdminHome(props) {
         applicants: []
     })
 
-    const [count, updateCount] = useState({
-        count: []
-    })
+
 
     function fetchJobs() {
         API.getJobs()
@@ -33,41 +30,39 @@ export default function AdminHome(props) {
                     jobs: res.data
                 })
             });
-        
+
     }
 
     function fetchApplicants() {
         API.getApplicants()
-            .then(res =>{
+            .then(res => {
                 updateApps({
                     applicants: res.data
                 })
             })
     }
 
+    const RenderJobs = () => {
+        props.history.push('/admin/jobs')
+    }
+
     const RenderAddNewJob = () => {
         props.history.push('/admin/add-job')
     }
 
-    const RenderApplicants = () => {
-        props.history.push('/admin/candidates')
+    const renderCandidate = (e) => {
+        props.history.push('/admin/candidates/' + e.target.id)
     }
-
-    const RenderJobView = (e) => {
-        props.history.push('/admin/jobs/' + e.target.id)
-    }
-
-    
 
     return (
         <div className='admin'>
             <Row className='directory-container'>
                 <Col s={10} className='directory-window'>
-                    <JobTable jobs={jobState.jobs} click={(e)=>{RenderJobView(e)}}/>
+                    <ApplicantTable apps={appState.applicants} click={(e)=>renderCandidate(e)}/>
                 </Col>
                 <Col className='side-nav'>
-                    <div onClick={RenderApplicants} className='sidenav-item'>
-                        View All Candidates
+                    <div onClick={RenderJobs} className='sidenav-item'>
+                        View All Jobs
                     </div>
                     <div onClick={RenderAddNewJob} className='sidenav-item'>
                         Add New Job Listing

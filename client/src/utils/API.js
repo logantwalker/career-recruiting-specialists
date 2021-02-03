@@ -47,6 +47,10 @@ const API = {
 
     postApplication: function (q) {
         return axios.post("/api/applicants", q)
+    },
+
+    getOneApplicant: function (id) {
+        return axios.get("/api/applicants/" + id);
     }
 };
 
