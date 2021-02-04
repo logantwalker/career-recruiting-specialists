@@ -1,11 +1,15 @@
 import { React, useState, useEffect } from 'react';
 import { Row, Col, TextInput, Textarea, Select, Button } from 'react-materialize';
+import { useHistory } from "react-router-dom";
 import DeleteJobModal from '../../../components/Modals/DeleteJobModal';
 import API from '../../../utils/API'
 import './editjob.css'
 import 'materialize-css';
 
 export default function EditJob(props) {
+    const history = useHistory();
+
+
     useEffect(() => {
         getJobData(props.match.params.job);
     }, [])
@@ -87,6 +91,7 @@ export default function EditJob(props) {
 
     const handleUpdate = () => {
         if (editMode.changeMade) {
+            console.log(Job.job_id)
             API.updateJob(Job, Job.job_id).then().catch(err => console.log(err));
         }
         else {
@@ -95,7 +100,11 @@ export default function EditJob(props) {
     }
 
     const handleDelete = () => {
-        API.deleteJob(Job.job_id).then().catch(err => console.log(err))
+        API.deleteJob(Job.job_id)
+            .then(res => {
+                props.history.push('/admin/jobs')
+            })
+            .catch(err => console.log(err))
     }
 
     const captureField = (e) => {

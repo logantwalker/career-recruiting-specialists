@@ -6,7 +6,7 @@ import './addJob.css'
 import 'materialize-css';
 
 
-export default function AddNewJob() {
+export default function AddNewJob(props) {
     const [newJob, updateFields] = useState({
         jobTitle: '',
         company: '',
@@ -14,7 +14,7 @@ export default function AddNewJob() {
         jobType: '',
         shift: '',
         description: '',
-        duties:[''],
+        duties: [''],
         quals: [''],
         location: '',
         salaryLow: '',
@@ -22,7 +22,7 @@ export default function AddNewJob() {
     })
 
     const captureField = (e) => {
-        switch(e.target.id){
+        switch (e.target.id) {
             case 'jobTitle':
                 updateFields({
                     ...newJob,
@@ -81,16 +81,16 @@ export default function AddNewJob() {
         }
     }
 
-    const captureMulti = (e) =>{
-        let [type,index] = e.target.id.split('-');
-        
-        switch(type){
+    const captureMulti = (e) => {
+        let [type, index] = e.target.id.split('-');
+
+        switch (type) {
             case 'd':
                 let initialD = newJob.duties;
                 initialD[index] = e.target.value
                 updateFields({
                     ...newJob,
-                    duties:initialD
+                    duties: initialD
                 })
                 break
             case 'q':
@@ -104,15 +104,15 @@ export default function AddNewJob() {
         }
     }
 
-    const addDuty = () =>{
+    const addDuty = () => {
         let plusOneDuty = newJob.duties;
         plusOneDuty.push('');
         updateFields({
             ...newJob,
-            duties:plusOneDuty
+            duties: plusOneDuty
         })
     }
-    const addQualification = () =>{
+    const addQualification = () => {
         let plusOneQual = newJob.quals;
         plusOneQual.push('');
         updateFields({
@@ -121,9 +121,9 @@ export default function AddNewJob() {
         })
     }
 
-    const removeD = (e) =>{
+    const removeD = (e) => {
         let [type, index] = e.target.id.split('-');
-        switch(type){
+        switch (type) {
             case 'd':
                 let removeOne = newJob.duties;
                 removeOne.splice(index, 1);
@@ -135,9 +135,9 @@ export default function AddNewJob() {
         }
     }
 
-    const removeQ = (e) =>{
-        let [type,index] = e.target.id.split('-');
-        switch(type){
+    const removeQ = (e) => {
+        let [type, index] = e.target.id.split('-');
+        switch (type) {
             case 'q':
                 let removeOneQ = newJob.quals;
                 removeOneQ.splice(index, 1);
@@ -149,10 +149,10 @@ export default function AddNewJob() {
         }
     }
 
-    const postJob = () =>{
+    const postJob = () => {
         API.postNewJob(newJob)
-            .then(res =>{
-                console.log(res);
+            .then(res => {
+                props.history.push('/admin/jobs')
             })
     }
 
@@ -275,7 +275,7 @@ export default function AddNewJob() {
                         label="Job Location"
                     />
 
-                    
+
 
                     <Col s={12}>
                         <h6>Salary Range:</h6>
@@ -290,13 +290,13 @@ export default function AddNewJob() {
                         id="salaryHigh"
                         label="High"
                     />
-                    
+
                     <MultiField
                         type='d'
                         items={newJob.duties}
                         record={captureMulti}
                         add={addDuty}
-                        remove={removeD}/>
+                        remove={removeD} />
                     <MultiField
                         type='q'
                         items={newJob.quals}
@@ -305,14 +305,12 @@ export default function AddNewJob() {
                         remove={removeQ} />
 
                     <Col s={12}>
-                        <a href='/admin'>
-                            <Button className='title-btn right'
-                                node="button"
-                                waves='light'
-                                onClick={postJob}>
-                                Add Job
-                            </Button>
-                        </a>
+                        <Button className='title-btn right'
+                            node="button"
+                            waves='light'
+                            onClick={postJob}>
+                            Add Job
+                        </Button>
                     </Col>
                 </Col>
             </Row>

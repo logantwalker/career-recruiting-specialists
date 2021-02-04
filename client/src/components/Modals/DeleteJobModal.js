@@ -9,15 +9,14 @@ const DeleteJobModal = (props) => {
             <div className='modal-background'>
                 <div className='modal-content'>
                     <h4 className='modal-header'>
-                        Warning! You are about to delete this job!
+                        Warning! You are about to delete this permanently!
                 </h4>
                     <div className='divider'></div>
                     <p className='center-align'>
-                        Confirm below if you would like to delete this job listing.
+                        Confirm below if you would like to continue.
                 </p>
                     <Row className='confirmation'>
                         <Col s={2} className='cfrm-btn '>
-                            <a href='/admin'>
                                 <Button
                                     className='yes-btn title-btn'
                                     onClick={() => {
@@ -26,7 +25,6 @@ const DeleteJobModal = (props) => {
                                     }}>
                                     YES
                                 </Button>
-                            </a>
                         </Col>
                         <Col s={2}  >
                             <Button

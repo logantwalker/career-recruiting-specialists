@@ -18,4 +18,12 @@ module.exports = {
             .then(dbApp => res.json(dbApp))
             .catch(err => res.status(422).json(err))
     },
+
+    remove: function (req, res) {
+        console.log(req.params.id)
+        db.Applicant.findById(req.params.id)
+            .then(dbApp => dbApp.remove())
+            .then(dbApp => res.json(dbApp))
+            .catch(err => res.status(422).json(err));
+    }
 }

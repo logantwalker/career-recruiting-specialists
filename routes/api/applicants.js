@@ -9,7 +9,6 @@ router.route("/")
 router
     .route("/:id")
     .get(applicantController.findOne)
-//     .put(applicantController.update)
-//     .delete(applicantController.remove);
+    .delete(applicantController.remove);
 
 module.exports = router;

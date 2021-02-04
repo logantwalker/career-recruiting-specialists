@@ -57,8 +57,6 @@ export default function AdminHome(props) {
         props.history.push('/admin/jobs/' + e.target.id)
     }
 
-    
-
     return (
         <div className='admin'>
             <Row className='directory-container'>

@@ -51,6 +51,10 @@ const API = {
 
     getOneApplicant: function (id) {
         return axios.get("/api/applicants/" + id);
+    },
+    deleteApplicant: function (id) {
+        console.log(id)
+        return axios.delete("/api/applicants/" + id);
     }
 };
 
