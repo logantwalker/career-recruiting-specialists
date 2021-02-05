@@ -16,7 +16,7 @@ export default function EditJob(props) {
     }, [])
 
     const [Job, updateFields] = useState({
-        job_id: '',
+        job_id: props.match.params.job,
         jobTitle: '',
         company: '',
         industry: '',
@@ -45,6 +45,7 @@ export default function EditJob(props) {
             .then(res => {
                 let job = res.data
                 let sArr = job.salary.split('-')
+                console.log(job._id)
                 updateFields({
                     job_id: job._id,
                     jobTitle: job.title,
@@ -105,7 +106,11 @@ export default function EditJob(props) {
     const handleUpdate = () => {
         if (editMode.changeMade) {
             console.log(Job.job_id)
-            API.updateJob(Job, Job.job_id).then().catch(err => console.log(err));
+            API.updateJob(Job, Job.job_id)
+                .then( res=>{
+                    props.history.push(`/${routeKey.key}/admin/jobs`);
+                })
+                .catch(err => console.log(err));
         }
         else {
             alert('You have not made any changes to this job!')
@@ -115,7 +120,7 @@ export default function EditJob(props) {
     const handleDelete = () => {
         API.deleteJob(Job.job_id)
             .then(res => {
-                props.history.push(`/${routeKey.key}/admin/jobs`)
+                props.history.push(`/${routeKey.key}/admin/jobs`);
             })
             .catch(err => console.log(err))
     }

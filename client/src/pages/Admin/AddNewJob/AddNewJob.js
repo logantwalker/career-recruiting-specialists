@@ -94,7 +94,7 @@ export default function AddNewJob(props) {
                 })
                 break
             case 'q':
-                let initialQ = newJob.duties;
+                let initialQ = newJob.quals;
                 initialQ[index] = e.target.value
                 updateFields({
                     ...newJob,
@@ -138,7 +138,7 @@ export default function AddNewJob(props) {
     const removeQ = (e) => {
         let [type, index] = e.target.id.split('-');
         switch (type) {
-            case 'q':
+            case 'q': 
                 let removeOneQ = newJob.quals;
                 removeOneQ.splice(index, 1);
                 updateFields({

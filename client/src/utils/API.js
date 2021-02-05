@@ -23,6 +23,7 @@ const API = {
         return axios.post("/api/jobs", jobData)
     },
     updateJob: function (q, id) {
+        console.log(id)
         let jobData = {
             title: q.jobTitle,
             industry: q.industry,

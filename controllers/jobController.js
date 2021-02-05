@@ -19,7 +19,8 @@ module.exports = {
     },
 
     update: function (req, res) {
-        db.Job.findOneAndUpdate({ id: req.params._id }, req.body)
+        console.log(req.params._id, req.params.id)
+        db.Job.findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbJob => res.json(dbJob))
             .catch(err => res.status(422).json(err));
     },

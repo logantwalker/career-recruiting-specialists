@@ -8,7 +8,6 @@ import 'materialize-css';
 export default function AdminAppView(props) {
 
     useEffect(() => {
-        
         fetchApplicants();
         getRouteKey();
     }, []);

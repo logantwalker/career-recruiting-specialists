@@ -23,6 +23,7 @@ export default function MultiField(props) {
                 <Textarea s={10} 
                     id={`${props.type}-${i}`}
                     label={Label}
+                    value={item}
                     onChange={e => props.record(e)}/>
                 <Col s={2}>
                     <Button
