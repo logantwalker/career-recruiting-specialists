@@ -1,4 +1,5 @@
 module.exports = {
     Job: require("./job"),
-    Applicant: require("./applicant")
+    Applicant: require("./applicant"),
+    UUID: require("./uuid")
 };

@@ -1,6 +1,5 @@
 import { React, useEffect, useState } from 'react';
 import { Row, Col } from 'react-materialize';
-import ApplicantTable from '../ApplicantTable/ApplicantTable';
 import JobTable from '../JobTable/JobTable';
 import API from '../../../utils/API';
 import 'materialize-css';
@@ -12,6 +11,7 @@ export default function AdminHome(props) {
     useEffect(() => {
         fetchJobs();
         fetchApplicants();
+        getRouteKey();
     }, []);
 
     const [jobState, updateJobs] = useState({
@@ -22,9 +22,18 @@ export default function AdminHome(props) {
         applicants: []
     })
 
-    const [count, updateCount] = useState({
-        count: []
+    const [routeKey, setKey] = useState({
+        key: ''
     })
+
+    function getRouteKey() {
+        API.getUUID()
+            .then(res => {
+                setKey({
+                    key: res.data[0].value
+                })
+            })
+    }
 
     function fetchJobs() {
         API.getJobs()
@@ -46,15 +55,16 @@ export default function AdminHome(props) {
     }
 
     const RenderAddNewJob = () => {
-        props.history.push('/admin/add-job')
+        console.log(routeKey.key)
+        props.history.push(`/${routeKey.key}/admin/add-job`)
     }
 
     const RenderApplicants = () => {
-        props.history.push('/admin/candidates')
+        props.history.push(`/${routeKey.key}/admin/candidates`)
     }
 
     const RenderJobView = (e) => {
-        props.history.push('/admin/jobs/' + e.target.id)
+        props.history.push(`/${routeKey.key}/admin/jobs/` + e.target.id)
     }
 
     return (

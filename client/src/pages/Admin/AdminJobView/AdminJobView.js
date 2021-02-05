@@ -10,6 +10,7 @@ export default function AdminJobView(props) {
     useEffect(() => {
         getJobData(props.match.params.job);
         fetchApplicants();
+        getRouteKey();
     }, [])
 
     const [jobState, updateJob] = useState({
@@ -19,6 +20,19 @@ export default function AdminJobView(props) {
     const [appState, updateApps] = useState({
         applicants: []
     })
+
+    const [routeKey, setKey] = useState({
+        key: ''
+    })
+
+    function getRouteKey() {
+        API.getUUID()
+            .then(res => {
+                setKey({
+                    key: res.data[0].value
+                })
+            })
+    }
 
     function getJobData(id) {
         API.getOneJob(id)
@@ -50,11 +64,11 @@ export default function AdminJobView(props) {
     }
 
     const renderCandidate = (e) => {
-        props.history.push('/admin/candidates/' + e.target.id)
+        props.history.push(`/${routeKey.key}/admin/candidates/` + e.target.id)
     }
 
     const editJob = (id) => {
-        props.history.push('/admin/edit-job/' + id)
+        props.history.push(`/${routeKey.key}/admin/edit-job/` + id)
     }
 
     let duties;

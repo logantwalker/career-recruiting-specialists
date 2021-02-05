@@ -12,6 +12,7 @@ export default function EditJob(props) {
 
     useEffect(() => {
         getJobData(props.match.params.job);
+        getRouteKey();
     }, [])
 
     const [Job, updateFields] = useState({
@@ -26,6 +27,18 @@ export default function EditJob(props) {
         salaryLow: '',
         salaryHigh: ''
     })
+    const [routeKey, setKey] = useState({
+        key: ''
+    })
+
+    function getRouteKey() {
+        API.getUUID()
+            .then(res => {
+                setKey({
+                    key: res.data[0].value
+                })
+            })
+    }
 
     function getJobData(id) {
         API.getOneJob(id)
@@ -102,7 +115,7 @@ export default function EditJob(props) {
     const handleDelete = () => {
         API.deleteJob(Job.job_id)
             .then(res => {
-                props.history.push('/admin/jobs')
+                props.history.push(`/${routeKey.key}/admin/jobs`)
             })
             .catch(err => console.log(err))
     }

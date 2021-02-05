@@ -14,7 +14,7 @@ export default function ApplicantTable(props) {
 
     return (
         <div className={tableClass}>
-            <Table centered={true} hoverable={true} >
+            <Table  hoverable={true} >
                 <thead>
                     <tr>
                         <th data-field="name">

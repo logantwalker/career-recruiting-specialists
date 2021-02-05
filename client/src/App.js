@@ -25,8 +25,26 @@ import AddNewJob from './pages/Admin/AddNewJob/AddNewJob';
 import AdminAppView from './pages/Admin/AdminAppView/AdminAppView';
 import EditJob from './pages/Admin/EditJob/EditJob';
 import CandidateView from './pages/Admin/CandidateView/CandidateView';
+import Login from './pages/Admin/Login/Login';
 
 function App() {
+
+  useEffect(() => {
+    getRouteKey();
+  }, [])
+
+  const [routeKey, setKey] = useState({
+    key: ''
+  })
+
+  function getRouteKey() {
+    API.getUUID()
+      .then(res => {
+        setKey({
+            key: res.data[0].value
+          })
+      })
+  }
   return (
     <Router>
       <Navbar></Navbar>
@@ -41,12 +59,12 @@ function App() {
         <Route exact path='/apply-success' component={ApplySuccess} />
         <Route exact path='/about' component={AboutUs} />
         <Route exact path='/contact' component={Contact} />
-        <Route exact path='/admin/jobs' component={AdminHome} />
-        <Route exact path='/admin/jobs/:job' component={AdminJobView} />
-        <Route exact path='/admin/edit-job/:job' component={EditJob} />
-        <Route exact path='/admin/add-job' component={AddNewJob} />
-        <Route exact path='/admin/candidates' component={AdminAppView} />
-        <Route exact path='/admin/candidates/:candidate' component={CandidateView} />
+        <Route exact path={`/${routeKey.key}/admin/jobs`} component={AdminHome} />
+        <Route exact path={`/${routeKey.key}/admin/jobs/:job`} component={AdminJobView} />
+        <Route exact path={`/${routeKey.key}/admin/edit-job/:job`} component={EditJob} />
+        <Route exact path={`/${routeKey.key}/admin/add-job`} component={AddNewJob} />
+        <Route exact path={`/${routeKey.key}/admin/candidates`} component={AdminAppView} />
+        <Route exact path={`/${routeKey.key}/admin/candidates/:candidate`} component={CandidateView} />
 
         <Route component={NotFound} />
       </Switch>

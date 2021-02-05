@@ -1,7 +1,6 @@
 import { React, useEffect, useState } from 'react';
-import { Row, Col } from 'react-materialize';
+import { Row, Col, TextInput, Select } from 'react-materialize';
 import ApplicantTable from '../ApplicantTable/ApplicantTable';
-import JobTable from '../JobTable/JobTable';
 import API from '../../../utils/API';
 import 'materialize-css';
 
@@ -9,28 +8,27 @@ import 'materialize-css';
 export default function AdminAppView(props) {
 
     useEffect(() => {
-        fetchJobs();
+        
         fetchApplicants();
+        getRouteKey();
     }, []);
 
-    const [jobState, updateJobs] = useState({
-        jobs: []
-    })
 
     const [appState, updateApps] = useState({
         applicants: []
     })
 
+    const [routeKey, setKey] = useState({
+        key: ''
+    })
 
-
-    function fetchJobs() {
-        API.getJobs()
+    function getRouteKey() {
+        API.getUUID()
             .then(res => {
-                updateJobs({
-                    jobs: res.data
+                setKey({
+                    key: res.data[0].value
                 })
-            });
-
+            })
     }
 
     function fetchApplicants() {
@@ -43,30 +41,45 @@ export default function AdminAppView(props) {
     }
 
     const RenderJobs = () => {
-        props.history.push('/admin/jobs')
+        props.history.push(`/${routeKey.key}/admin/jobs`)
     }
 
     const RenderAddNewJob = () => {
-        props.history.push('/admin/add-job')
+        props.history.push(`/${routeKey.key}/admin/add-job`)
     }
 
     const renderCandidate = (e) => {
-        props.history.push('/admin/candidates/' + e.target.id)
+        props.history.push(`/${routeKey.key}/admin/candidates/` + e.target.id)
     }
 
     return (
         <div className='admin'>
             <Row className='directory-container'>
-                <Col s={10} className='directory-window'>
+                <Col s={9} className='directory-window'>
                     <ApplicantTable apps={appState.applicants} click={(e)=>renderCandidate(e)}/>
                 </Col>
-                <Col className='side-nav'>
-                    <div onClick={RenderJobs} className='sidenav-item'>
+                <Col s={3} className='side-nav'>
+                    <Col s={12} className='search-filter'>
+                        
+                        <div className='input-field col s12'>
+                            <select id="search-filter" name="search-filter" className='keyword-search'>
+                                <option value="" disabled selected>Select Search Filter</option>
+                                <option value="full-time">Full-Time</option>
+                                <option value="temporary">Temporary</option>
+                            </select>
+                        </div>
+                        <TextInput s={12} className='keyword-search'
+                            id='query'
+                            placeholder='search'/>
+                        
+                        
+                    </Col>
+                    <Col s={12} onClick={RenderJobs} className='sidenav-item'>
                         View All Jobs
-                    </div>
-                    <div onClick={RenderAddNewJob} className='sidenav-item'>
+                    </Col>
+                    <Col s={12} onClick={RenderAddNewJob} className='sidenav-item'>
                         Add New Job Listing
-                    </div>
+                    </Col>
                 </Col>
             </Row>
         </div>

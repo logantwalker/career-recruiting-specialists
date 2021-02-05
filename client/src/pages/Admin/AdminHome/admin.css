@@ -5,7 +5,6 @@
 
 .directory-container{
     margin-bottom: 0 !important;
-    
 }
 
 .side-nav{
@@ -24,8 +23,8 @@
 }
 
 .sidenav-item{
-    height: 3.5rem;
-    padding-top: 1rem;
+    height: 3.5rem !important;
+    padding-top: 1rem !important;
     text-align: center !important;
     width: 100%;
     border-bottom: 1px solid white;
@@ -92,4 +91,43 @@
     height:89.25vh;
     box-shadow: 9px 10px 15px -4px rgba(0, 0, 0, 0.5);
     background-color: white;
+}
+
+.login-container{
+    height: 89.25vh;
+}
+
+.login{
+    height: 45vh;
+    background-color: white;
+    margin-top: 10% !important;
+    margin-left: 25% !important;
+    border-radius: 25px;
+    padding-left:8% !important;
+    padding-right: 8% !important;
+    padding-top: 6% !important;
+}
+
+
+
+.keyword-search{
+    border: 0px solid;
+    border-bottom: 1px solid white !important;
+    color:white !important;
+    background-color: transparent !important;
+    
+}
+
+.search-filter{
+    padding: 0 !important;
+    margin-bottom: 4%;
+}
+
+.search-label{
+    color: white !important;
+}
+
+#search-filter{
+    display: flex !important;
+    padding:0 !important;
 }
