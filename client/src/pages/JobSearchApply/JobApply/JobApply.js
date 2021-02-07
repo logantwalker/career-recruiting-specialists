@@ -16,6 +16,7 @@ export default function JobApply(props) {
         last_name: '',
         email: '',
         phone: '',
+        location:'',
         job_applied: props.match.params.job,
         education: {
             attained: '',
