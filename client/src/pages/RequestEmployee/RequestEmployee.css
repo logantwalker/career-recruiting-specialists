@@ -24,3 +24,9 @@
 .form-head{
     margin-top: 3.5rem;
 }
+
+@media (max-width: 600px){
+    .width-helper{
+    width: 100% !important;
+}
+}

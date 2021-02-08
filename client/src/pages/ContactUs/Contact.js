@@ -24,10 +24,10 @@ export default function ContactUs(props) {
                 <h1 className='right-align'>CONTACT US</h1>
             </div>
             <div className='employer-header'>
-                <div className='header-title'>
+                <div className='header-title hide-on-small-only'>
                     Middle GA'S Staffing Specialists
                 </div>
-                <div className='header-subtitle'>
+                <div className='header-subtitle hide-on-small-only'>
                     Have a question? We are here to help!
                 </div>
             </div>

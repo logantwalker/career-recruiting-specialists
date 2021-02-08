@@ -23,10 +23,10 @@ export default function RequestEmployee(props) {
                 <h1 className='right-align'>REQUEST AN EMPLOYEE</h1>
             </div>
             <div className='employer-header'>
-                <div className='header-title'>
+                <div className='header-title hide-on-small-only'>
                     Find your right fit, right now.
                 </div>
-                <div className='header-subtitle'>
+                <div className='header-subtitle hide-on-small-only'>
                     Request your next employee through Career Recruiting Specialists!
                 </div>
             </div>

@@ -3,3 +3,7 @@
     align-items: center;
     z-index: 50;
 }
+
+.menu-item:hover{
+    color:#153A81
+}

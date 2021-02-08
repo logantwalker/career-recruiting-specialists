@@ -12,10 +12,10 @@ const EmployerOverview = () => {
 
             </div>
             <div className='employer-header'>
-                <div className='header-title'>
+                <div className='header-title hide-on-small-only'>
                     WE SPECIALIZE IN SUCCESS
                 </div>
-                <div className='header-subtitle'>
+                <div className='header-subtitle hide-on-small-only'>
                     It's more than job descriptions. It takes expertise.
                 </div>
             </div>

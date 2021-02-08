@@ -37,7 +37,7 @@ const AboutUs = () => {
                             Staffing and she lost her job, but not her tenacity for this industry.
                         </h6>
                     </Col>
-                    <Col s={5}>
+                    <Col s={12} m={5}>
                         <img src={joyce}></img>
                     </Col>
                 </Row>

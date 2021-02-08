@@ -186,7 +186,7 @@ export default function JobApply(props) {
     let studyFields;
     if (appState.degree) {
         studyFields = (
-            <TextInput s={6}
+            <TextInput s={12} m={6}
                 id='study-field'
                 label='Field Of Study'
                 onChange={(e) => captureField(e)} />)
@@ -196,11 +196,11 @@ export default function JobApply(props) {
     if (appState.certs) {
         certFields = (
             <div>
-                <TextInput s={6}
+                <TextInput s={12} m={6}
                     id='cert-title'
                     label='Title'
                     onChange={(e) => captureField(e)} />
-                <Textarea s={8}
+                <Textarea s={12} m={8}
                     id='cert-desc'
                     label='description'
                     onChange={(e) => captureField(e)} />
@@ -219,33 +219,33 @@ export default function JobApply(props) {
                         <Col s={12} className='app-fields'>
                             <h6 className='section-head'>Personal Information:</h6>
                             <form onSubmit={sendEmail}>
-                                <div className='input-field col s6'>
+                                <div className='input-field col s12 m6'>
                                     <label htmlFor='first_name'>First Name</label>
                                     <input type="text" name="first_name" id="first_name"
                                         onChange={(e) => captureField(e)} />
                                 </div>
 
-                                <div className='input-field col s6'>
+                                <div className='input-field col s12 m6'>
                                     <label htmlFor='last_name'>Last Name</label>
                                     <input type="text" name="last_name" id="last_name"
                                         onChange={(e) => captureField(e)} />
                                 </div>
 
-                                <div className='input-field col s6'>
+                                <div className='input-field col s12 m6'>
                                     <label htmlFor='user_email'>Email</label>
                                     <input type="text" name="user_email" id="user_email"
                                         onChange={(e) => captureField(e)} />
                                 </div>
 
                                 <Col className='empty-col' s={12}>
-                                    <TextInput s={6}
+                                    <TextInput s={12} m={6}
                                         id='phone'
                                         label='Phone Number'
                                         type='tel'
                                         onChange={(e) => captureField(e)} />
                                 </Col>
                                 <Col className='empty-col' s={12}>
-                                    <TextInput s={6}
+                                    <TextInput s={12} m={6}
                                         id='location'
                                         label='Location'
                                         onChange={(e) => captureField(e)}
@@ -258,13 +258,13 @@ export default function JobApply(props) {
                                 </Col>
                                 <Col className='empty-col' s={12}>
                                     <Select
+                                        s={12} m={6}
                                         id="edu-level"
                                         onChange={(e) => {
                                             fieldOfStudy(e)
                                             captureField(e)
                                         }}
                                         multiple={false}
-                                        s={6}
                                         options={{
                                             classes: '',
                                             dropdownOptions: {
@@ -287,25 +287,25 @@ export default function JobApply(props) {
                                             disabled
                                             value="">
                                             Select Eductaion Level
-                                    </option>
+                                        </option>
                                         <option value="some-HS">
                                             Some High School
-                                    </option>
+                                        </option>
                                         <option value="HS-GED">
                                             High School or GED
-                                    </option>
+                                        </option>
                                         <option value="some-college">
                                             Some College
-                                    </option>
+                                        </option>
                                         <option value="associates">
                                             Associates Degree
-                                    </option>
+                                        </option>
                                         <option value="bachelors">
                                             Bachelor's Degree
-                                    </option>
+                                        </option>
                                         <option value="masters-plus">
                                             Master's Degree or Higher
-                                    </option>
+                                        </option>
                                     </Select>
                                 </Col>
                                 <Col className='empty-col' s={12}>
@@ -320,7 +320,7 @@ export default function JobApply(props) {
                                         onChange={(e) => addCert(e)}
                                         id="certifications"
                                         multiple={false}
-                                        s={6}
+                                        s={12} m={6}
                                         options={{
                                             classes: '',
                                             dropdownOptions: {
@@ -361,15 +361,15 @@ export default function JobApply(props) {
                                     <p className='section-subhead'>
                                         Previous Three Job Titles
                                 </p>
-                                    <TextInput s={4}
+                                    <TextInput s={12} m={4}
                                         id='job1'
                                         label='Job Title'
                                         onChange={(e) => captureField(e)} />
-                                    <TextInput s={4}
+                                    <TextInput s={12} m={4}
                                         id='job2'
                                         label='Job Title'
                                         onChange={(e) => captureField(e)} />
-                                    <TextInput s={4}
+                                    <TextInput s={12} m={4}
                                         id='job3'
                                         label='Job Title'
                                         onChange={(e) => captureField(e)} />
