@@ -99,6 +99,7 @@ export default function RequestEmployee(props) {
                                 <label htmlFor='user_email'>Email</label>
                                 <input type="email" name="user_email" id='user_email' />
                             </div>
+                            <input className='submit-button btn' type="submit" value="Send" />
                         </form>
                     </Col>
                 </Row>
