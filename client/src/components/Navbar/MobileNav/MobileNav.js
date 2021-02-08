@@ -10,16 +10,16 @@ const MobileNav = (props) => {
     return (
         <Row className='nav-window hide-on-large-only right'>
             <Col s={12} m={6} className='center hoverable'>
-                <NavItem> <a className='dropdown-link' href='/'>Home</a></NavItem>
+                <a className='dropdown-link' href='/'><NavItem> Home</NavItem></a>
             </Col>
             <Col s={12} m={6} className='center hoverable'>
-                <NavItem> <a className='dropdown-link' href='/employer-overview'>For Employers</a></NavItem>
+                <a className='dropdown-link' href='/employer-overview'><NavItem>For Employers</NavItem></a>
             </Col>
             <Col s={12} m={6} className='center hoverable' >
-                <NavItem> <a className='dropdown-link' href='/request-employee'>Request Employee</a></NavItem>
+                <a className='dropdown-link' href='/request-employee'><NavItem>Request Employee</NavItem></a>
             </Col>
             <Col s={12} m={6} className='center  hoverable'>
-                <NavItem> <a className='dropdown-link' href='/job-search'>Job Search</a></NavItem>
+                <a className='dropdown-link' href='/job-search'><NavItem>Job Search</NavItem></a>
             </Col>
             <Col s={12} m={6} className='center hoverable'>
                 <a href='/about'><NavItem>About Us</NavItem></a>

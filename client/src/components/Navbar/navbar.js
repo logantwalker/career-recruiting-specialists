@@ -35,7 +35,7 @@ const Navbar = (props) => {
                         </Col>
                         <div className='right hide-on-med-and-down'>
                             <Col>
-                                <NavItem> <a className='dropdown-link' href='/'>Home</a></NavItem>
+                                <a className='dropdown-link' href='/'><NavItem>Home</NavItem></a>
                             </Col>
                             <Col>
                                 <NavItem
