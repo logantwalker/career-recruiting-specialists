@@ -34,7 +34,7 @@ const EmployerOverview = () => {
                     With experience in the employment industry beginning in 2001, our professional recruiters offer placement expertise in professional and skilled trades positions in many disciplines, including:
                 </p>
                 <Row>
-                    <Col m={4} className='center-align'>
+                    <Col s={12} m={4} className='center-align'>
                         <ul>
                             <li>Engineers</li>
                             <li>Industrial Maintenance</li>
@@ -45,7 +45,7 @@ const EmployerOverview = () => {
                             <li>Safety Managers</li>
                         </ul>
                     </Col>
-                    <Col m={4} className='center-align'>
+                    <Col s={12} m={4} className='center-align'>
                         <ul>
                             <li>Human Resources</li>
                             <li>Quality Assurance</li>
@@ -56,7 +56,7 @@ const EmployerOverview = () => {
                             <li>Sales & Marketing</li>
                         </ul>
                     </Col>
-                    <Col m={4} className='center-align'>
+                    <Col s={12} m={4} className='center-align'>
                         <ul>
                             <li>Information Technology</li>
                             <li>Schedulers/Planners</li>

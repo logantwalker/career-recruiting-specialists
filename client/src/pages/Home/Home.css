@@ -44,7 +44,7 @@
 }
 
 .parallax-container{
-    height: 625px;
+    height: 89.25vh;
     width:100%;
 }
 
@@ -84,21 +84,22 @@
 .testimonials h3{
     color: #153A81;
     margin-top: 5%;
+    padding-bottom: 4%;
 }
 
 .t1{
     background-image: url("./assets/Engineers.png");
-    background-size: 100% auto;
+    background-size: 100% 100%;
 }
 
 .t2{
     background-image: url("./assets/welder.png");
-    background-size: 100% auto;
+    background-size: 100% 100%;
 }
 
 .t3{
     background-image: url("./assets/Industrial\ Maintenance.jpg");
-    background-size: 100% auto;
+    background-size: 100% 100%;
 }
 
 .testimonial-background{

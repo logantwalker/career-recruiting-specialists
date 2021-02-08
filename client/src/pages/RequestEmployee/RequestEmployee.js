@@ -5,13 +5,13 @@ import emailjs from 'emailjs-com';
 import './RequestEmployee.css';
 import 'materialize-css';
 
-export default function RequestEmployee() {
+export default function RequestEmployee(props) {
 
     function sendEmail(e) {
         e.preventDefault();
         emailjs.sendForm('service_yktqjfg', 'employee_request', e.target, 'user_yX3jDLQByusWm1iD6b6JP')
             .then((result) => {
-                console.log(result.text);
+                props.history.push('/');
             }, (error) => {
                 console.log(error.text);
             });
@@ -32,11 +32,9 @@ export default function RequestEmployee() {
             </div>
 
             <div className='container'>
+                
                 <Row>
-                    
-                </Row>
-                <Row>
-                    <Col s={6} className='form-container'>
+                    <Col s={12} m={8} l={6} className='form-container'>
                         <form className="request-form" onSubmit={sendEmail}>
                             <h5>Job Information</h5>
                             <div className='divider width-helper'></div>
@@ -101,8 +99,6 @@ export default function RequestEmployee() {
                                 <label htmlFor='user_email'>Email</label>
                                 <input type="email" name="user_email" id='user_email' />
                             </div>
-
-                            
                         </form>
                     </Col>
                 </Row>

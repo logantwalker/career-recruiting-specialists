@@ -6,13 +6,13 @@ import './contact.css';
 import 'materialize-css';
 
 
-export default function ContactUs() {
+export default function ContactUs(props) {
 
     function sendEmail(e) {
         e.preventDefault();
         emailjs.sendForm('service_yktqjfg', 'contact_form', e.target, 'user_yX3jDLQByusWm1iD6b6JP')
             .then((result) => {
-                console.log(result.text);
+                props.history.push('/')
             }, (error) => {
                 console.log(error.text);
             });
@@ -34,25 +34,25 @@ export default function ContactUs() {
             
             <div className='container'>
                 <Row>
-                    <Col s={6} className='form-container'>
+                    <Col s={12} m={8} l={6} className='form-container'>
                         <form className="contact-form" onSubmit={sendEmail}>
                             <div className='input-field'>
-                                <label for='user_name'>Name</label>
+                                <label htmlFor='user_name'>Name</label>
                                 <input type="text" name="user_name" id="user_name" />
                             </div>
 
                             <div className='input-field'>
-                                <label for='user_email'>Email</label>
+                                <label htmlFor='user_email'>Email</label>
                                 <input type="email" name="user_email" id='user_email' />
                             </div>
 
                             <div className='input-field'>
-                                <label for='contact_number'>Phone Number</label>
+                                <label htmlFor='contact_number'>Phone Number</label>
                                 <input id='contact_number' type="text" name="contact_number" />
                             </div>
 
                             <div className='input-field'>
-                                <label for='message'>Message</label>
+                                <label htmlFor='message'>Message</label>
                                 <textarea className='materialize-textarea' name="message" id='message' />
                             </div>
                             <input className='submit-button btn' type="submit" value="Send" />

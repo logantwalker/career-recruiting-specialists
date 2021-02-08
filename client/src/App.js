@@ -7,7 +7,6 @@ import Navbar from './components/Navbar/navbar';
 import Home from './pages/Home/Home';
 import EmployerOverview from './pages/EmployerOverview/EmployerOverview'
 import RequestEmployee from './pages/RequestEmployee/RequestEmployee';
-import JobOverview from './pages/JobOverview/JobOverview';
 import SearchApply from './pages/JobSearchApply/SearchApply';
 import JobView from './pages/JobSearchApply/JobView/JobView'
 import JobApply from './pages/JobSearchApply/JobApply/JobApply';
@@ -25,7 +24,6 @@ import AddNewJob from './pages/Admin/AddNewJob/AddNewJob';
 import AdminAppView from './pages/Admin/AdminAppView/AdminAppView';
 import EditJob from './pages/Admin/EditJob/EditJob';
 import CandidateView from './pages/Admin/CandidateView/CandidateView';
-import Login from './pages/Admin/Login/Login';
 
 function App() {
 
@@ -52,7 +50,6 @@ function App() {
         <Route exact path='/' component={Home} />
         <Route exact path='/employer-overview' component={EmployerOverview} />
         <Route exact path='/request-employee' component={RequestEmployee} />
-        <Route exact path='/job-seekers' component={JobOverview} />
         <Route exact path='/job-search' component={SearchApply} />
         <Route exact path='/job-search/:job' component={JobView} />
         <Route exact path='/apply/:job' component={JobApply} />

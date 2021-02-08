@@ -8,7 +8,6 @@ import QEicon from './assets/QE-icon.png';
 import Micon from './assets/M-icon.png';
 import 'materialize-css';
 import './Home.css';
-import JobSearchSmall from '../../components/JobSearchSmall/JobSearchSmall';
 
 const Home = () => {
     return (
@@ -52,7 +51,7 @@ const Home = () => {
                     <h1>OUR SPECIALTIES</h1>
                     <h5 className='specialties-desc'>We are a full-service staffing and recruitment agency based in Augusta, with a focus on three key industries.</h5>
                 </Col>
-                <Col className='center-align' m={4}>
+                <Col className='center-align' s={12} m={4}>
                     <div className='icon-img'>
                         <img src={Micon} />
                     </div>
@@ -60,7 +59,7 @@ const Home = () => {
                         <a href='!#'>INDUSTRIAL MAINTENANCE</a>
                     </div>
                 </Col>
-                <Col className='center-align' m={4}>
+                <Col className='center-align' s={12} m={4}>
                     <div className='icon-img'>
                         <img src={QEicon} />
                     </div>
@@ -68,7 +67,7 @@ const Home = () => {
                         <a href='!#'>QUALITY ENGINEERING & MANAGEMENT</a>
                     </div>
                 </Col>
-                <Col className='center-align' m={4}>
+                <Col className='center-align' s={12} m={4}>
                     <div className='icon-img'>
                         <img src={EHSicon} />
                     </div>
@@ -92,9 +91,6 @@ const Home = () => {
                         responsiveThreshold: 0
                     }}
                 />
-            </div>
-            <div>
-                <JobSearchSmall />
             </div>
 
             <div className='testimonials'>

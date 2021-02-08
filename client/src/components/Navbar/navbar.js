@@ -1,12 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './navbar.css';
 import 'materialize-css';
 
 import BrandLogo from './assets/logo-image.jpg'
-import { Col, Row } from 'react-materialize';
+import { Col, Row, Icon } from 'react-materialize';
 import NavItem from './NavItem/navitem'
+import MobileNav from './MobileNav/MobileNav'
+
 
 const Navbar = (props) => {
+    let mobileNav;
+    const [mobileSate, setState] = useState({ showNav: false });
+
+    const mobileNavClick = () => {
+       let currentState = !mobileSate.showNav
+        setState({ showNav: currentState });
+    }
+
+    if (mobileSate.showNav) {
+        mobileNav = (
+            <MobileNav />
+        )
+    }
+
+
+
     return (
         <React.Fragment>
             <div className='custom-navbar'>
@@ -15,7 +33,7 @@ const Navbar = (props) => {
                         <Col>
                             <img height='75px' src={BrandLogo} alt='Career Recruiting Specialists Logo' />
                         </Col>
-                        <div className='right'>
+                        <div className='right hide-on-med-and-down'>
                             <Col>
                                 <NavItem> <a className='dropdown-link' href='/'>Home</a></NavItem>
                             </Col>
@@ -33,9 +51,7 @@ const Navbar = (props) => {
                                     id='2'
                                     title='For Job Seekers'
                                     dropdown={true}>
-                                    <a className='dropdown-link' href='/job-seekers'>OVERVIEW</a>
                                     <a className='dropdown-link' href='/job-search'>JOB SEARCH</a>
-                                    <a className='dropdown-link' href='!#'>APPLY NOW</a>
                                 </NavItem>
                             </Col>
                             <Col>
@@ -45,7 +61,15 @@ const Navbar = (props) => {
                                 <a href='/contact'><NavItem>Contact Us</NavItem></a>
                             </Col>
                         </div>
+                        <div className='mobileButton show-on-med-and-down hide-on-large-only'>
+                            <Col className='right'>
+                                <div className='menu-item valign-wrapper'>
+                                    <a onClick={()=>mobileNavClick()}><Icon small>menu</Icon></a>
+                                </div>
 
+                            </Col>
+                        </div>
+                        {mobileNav}
                     </Row>
                 </div>
             </div>
