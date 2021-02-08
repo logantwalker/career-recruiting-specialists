@@ -1,5 +1,5 @@
 import React from 'react';
-import { Parallax, Row, Col, Button, Carousel, Icon } from 'react-materialize';
+import { Parallax, Row, Col, Button, Carousel} from 'react-materialize';
 import Footer from '../../components/Footer/Footer';
 import img1 from './assets/welder.png';
 import img2 from './assets/carousel2.jpg';
@@ -20,7 +20,7 @@ const Home = () => {
                     </p>
                     <div className='btn-group'>
                         <span>
-                            <a href='/search-jobs'>
+                            <a href='/job-search'>
                                 <Button className='title-btn'
                                     node="button"
                                     waves='light'>

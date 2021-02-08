@@ -2,7 +2,7 @@ import React from 'react';
 import 'materialize-css';
 import './mobilenav.css';
 import NavItem from "../NavItem/navitem"
-import { Col, Row, Icon, Dropdown, Button } from 'react-materialize';
+import { Col, Row} from 'react-materialize';
 
 
 const MobileNav = (props) => {
