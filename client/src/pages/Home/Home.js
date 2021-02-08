@@ -20,7 +20,7 @@ const Home = () => {
                     </p>
                     <div className='btn-group'>
                         <span>
-                            <a href='/job-seekers'>
+                            <a href='/search-jobs'>
                                 <Button className='title-btn'
                                     node="button"
                                     waves='light'>
