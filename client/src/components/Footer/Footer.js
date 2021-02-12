@@ -22,12 +22,12 @@ const Footer = () => {
                     <div className="col l4 offset-l3 s12">
                         <h4 className="white-text">Social Media:</h4>
                         <h6>
-                            <a className="grey-text text-lighten-3" href="https://github.com/logantwalker" >
+                            <a className="grey-text text-lighten-3" href="https://www.facebook.com/jmclaugh123" >
                                 <Icon tiny left={true}>class</Icon>FaceBook
                                 </a>
                         </h6>
                         <h6>
-                            <a className="grey-text text-lighten-3" href="https://github.com/logantwalker" >
+                            <a className="grey-text text-lighten-3" href="https://www.linkedin.com/in/joyce-tejeda-mclaughlin-49a92424/" >
                                 <Icon tiny left={true}>business</Icon>LinkedIn
                                 </a>
                         </h6>

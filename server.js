@@ -19,7 +19,7 @@ app.use(express.static('./client/build'));
 app.use(routes)
 
 let MONGO_URL
-const MONGO_LOCAL_URL = "mongodb+srv://lwalker37:amv12v@cluster0.p7jgf.mongodb.net/Cluster0?retryWrites=true&w=majority"
+const MONGO_LOCAL_URL = "mongodb+srv://lwalker37:Heyw@rd2019@cluster0.lj2ee.mongodb.net/Cluster0?retryWrites=true&w=majority"
 
 if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI, {
