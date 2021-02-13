@@ -1,6 +1,7 @@
 const express = require("express");
 const routes = require("./routes");
 const mongoose = require('mongoose');
+var sslRedirect = require('heroku-ssl-redirect');
 // const session = require("express-session");
 
 // if (process.env.NODE_ENV === 'production') {
@@ -9,12 +10,16 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3002;
 
+//forcing https
+app.use(sslRedirect());
+
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // uncomment when deploying 
 app.use(express.static('./client/build'));
+
 
 app.use(routes)
 
