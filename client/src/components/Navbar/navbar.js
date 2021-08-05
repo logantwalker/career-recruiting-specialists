@@ -51,7 +51,7 @@ const Navbar = (props) => {
                                     id='2'
                                     title='For Job Seekers'
                                     dropdown={true}>
-                                    <a className='dropdown-link' href='/job-search'>JOB SEARCH</a>
+                                    <a className='dropdown-link' href='/careerportal'>JOB SEARCH</a>
                                 </NavItem>
                             </Col>
                             <Col>
