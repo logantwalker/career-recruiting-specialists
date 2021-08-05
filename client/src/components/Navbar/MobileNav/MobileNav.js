@@ -19,7 +19,7 @@ const MobileNav = (props) => {
                 <a className='dropdown-link' href='/request-employee'><NavItem>Request Employee</NavItem></a>
             </Col>
             <Col s={12} m={6} className='center  hoverable'>
-                <a className='dropdown-link' href='/job-search'><NavItem>Job Search</NavItem></a>
+                <a className='dropdown-link' href='/careerportal'><NavItem>Job Search</NavItem></a>
             </Col>
             <Col s={12} m={6} className='center hoverable'>
                 <a href='/about'><NavItem>About Us</NavItem></a>
